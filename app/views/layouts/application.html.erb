@@ -12,7 +12,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-gray-100">
+     <%= render 'navbar/nav' %>
     <%= yield %>
   </body>
 </html>
