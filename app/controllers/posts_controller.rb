@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-
+    authorize @post
   end
 
   def new
@@ -31,6 +31,9 @@ class PostsController < ApplicationController
   end
 
   def update
+    puts(current_user.id)
+    puts(@post)
+    authorize @post
 
     if @post.update(get_params)
 
@@ -43,6 +46,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize @post
     @post.destroy
     redirect_to root_path
   end
@@ -50,7 +54,7 @@ class PostsController < ApplicationController
   private
 
   def get_params
-    params.require(:post).permit(:title , :body)
+    params.require(:post).permit(:user_id ,:title , :body)
   end
 
   def set_params
