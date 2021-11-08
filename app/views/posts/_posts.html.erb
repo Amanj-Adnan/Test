@@ -9,13 +9,15 @@
         <%= posts.body %>
       </div>
       <div class="flex py-3 px-4 rounded-lg text-gray-500 font-semibold cursor-pointer">
-
+       <% if user_signed_in? %>
         <% pre_like = posts.likes.find { |like| like.user_id == current_user.id} %>
         <% if pre_like %>
           <%= link_to 'Unlike', post_like_path(posts, pre_like), method: :delete %>
         <% else %>
           <%= link_to 'Like', post_likes_path(posts), method: :post %>
         <% end %>
+
+          <%end %>
 
         <p class="mx-2"><%= posts.likes.count %> <%= (posts.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 
