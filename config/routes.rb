@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/admin' , to: 'admin/posts#index'
 
 
+  get '/admin/create_super_user', to: 'super_user/super_user#new'
+
 
 
 

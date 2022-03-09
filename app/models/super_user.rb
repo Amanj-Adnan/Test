@@ -1,3 +1,3 @@
 class SuperUser < ApplicationRecord
-  has_many :roles , dependent: :destroy
+  has_one :role, dependent: :destroy
 end

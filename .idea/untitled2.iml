@@ -83,7 +83,6 @@
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.11.0, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.10.1, ruby-3.0.1-p64) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rbs (v1.0.4, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.1.1, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v3.0.1, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, ruby-3.0.1-p64) [gem]" level="application" />
@@ -103,7 +102,6 @@
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.4, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo-data (v1.2021.2, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.9, ruby-3.0.1-p64) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="wdm (v0.1.1, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v4.1.0, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="webdrivers (v4.6.1, ruby-3.0.1-p64) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="webpacker (v5.4.3, ruby-3.0.1-p64) [gem]" level="application" />
