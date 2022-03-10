@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   get '/admin/super_users' , to: 'admin/super_users#index'
 
 
+  get '/admin/new_role' , to: 'roles/roles#new'
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
