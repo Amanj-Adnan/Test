@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts , dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one :user_profile, dependent: :destroy
+  has_many :attendances, dependent: :destroy
 
 
 end
