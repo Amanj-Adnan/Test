@@ -61,3 +61,7 @@ gem "tailwindcss-rails", "~> 0.4.3"
 gem 'devise'
 gem "pundit"
 
+gem 'wdm', '~> 0.1.1'
+gem 'roo', '~> 2.9'
+
+

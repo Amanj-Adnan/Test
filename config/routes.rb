@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   get '/admin/new_role' , to: 'roles/roles#new'
 
+  get '/admin/attendance' , to: 'attendance#index'
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
