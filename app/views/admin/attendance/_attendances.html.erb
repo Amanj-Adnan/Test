@@ -1,0 +1,67 @@
+
+<tbody class="bg-white divide-y divide-gray-300">
+<tr class="whitespace-nowrap">
+  <td class="px-6 py-4">
+    <div class="text-sm text-gray-900">
+      <%=attendances.user_id %>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm text-gray-500"> <%=attendances.user.email%></div>
+  </td>
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=attendances.date %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=attendances.exception %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=attendances.clock_in %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=attendances.clock_out %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=attendances.break_in %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=attendances.break_out %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=attendances.break_duration %>
+  </td>
+
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=attendances.comment %>
+  </td>
+
+
+
+
+
+  <td class="px-6 py-4">
+
+    <form method="POST" action="">
+
+      <button class="px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full" >
+        Absent
+      </button>
+    </form>
+
+  </td>
+
+</tr>
+
+</tbody>

@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Attendance") do |sheet|
+ sheet.add_row ["ID", "Email", "Date" , "Exception"]
+  @attendance.each do |attendance|
+    sheet.add_row [attendance.user_id, attendance.user.email, attendance.date, attendance.exception]
+  end
+end

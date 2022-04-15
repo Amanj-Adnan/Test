@@ -1,13 +1,13 @@
 
-<div class="flex ">
+<div class="flex   ">
 
 
-  <div class="md:flex  md:flex-row md:min-h-screen flex-initial">
+  <div class="md:flex  md:flex-row md:min-h-screen flex-initial ">
     <div class="flex flex-col w-full md:w-64 text-gray-200 bg-gray-900 flex-shrink-0">
       <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
         <a href="#" class="text-xl font-semibold tracking-widest text-gray-200 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Admin Dashboard</a>
       </div>
-      <nav class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto bg-gray-800 ">
+      <nav class="flex-grow   px-4 pb-4  bg-gray-800 ">
         <%= link_to "Create Super User" ,  admin_create_super_user_path , class: "block px-4 py-2 mt-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" %>
         <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Users</a>
         <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-200 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Posts</a>
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col  w-full">
+  <div class="flex flex-col justify-center w-full">
 
    <div class="flex  p-1 pt-2 justify-center bg-gray-800 w-full h-14  text-gray-200">
     <input class="border-2 w-96 border-gray-100 bg-gray-800 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
@@ -32,7 +32,9 @@
       <%= yield :name %>
 
     </div>
-    <%= yield :admin_content %>
+    <div class="flex justify-center">
+      <%= yield :admin_content %>
+    </div>
   </div>
 
 
