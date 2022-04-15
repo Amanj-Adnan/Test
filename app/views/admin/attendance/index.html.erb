@@ -1,4 +1,6 @@
 <% content_for :name do %>
+
+  <div class="flex justify-between">
   <%=
     link_to 'Download as Excel',
             admin_attendance_path(format: :xlsx)
@@ -8,7 +10,7 @@
             items_imports_new_path
   %>
 <% end %>
-
+</div>
 
 <% content_for :admin_content do %>
 <div class="overflow-auto">
