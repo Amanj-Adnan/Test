@@ -6,7 +6,7 @@ class ItemsImportsController < ApplicationController
   def create
     @items_import = ItemsImport.new(params[:items_import])
     if @items_import.save
-      redirect_to items_imports_path
+      redirect_to admin_attendance_path
     else
       render :new
     end

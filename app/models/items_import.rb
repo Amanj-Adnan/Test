@@ -8,9 +8,9 @@ class ItemsImport
     attributes.each { |name, value| send("#{name}=", value) }
   end
 
-  # def persisted?
-  #   false
-  # end
+  def persisted?
+    false
+  end
 
   def open_spreadsheet
     case File.extname(file.original_filename)
@@ -23,10 +23,10 @@ class ItemsImport
 
   def load_imported_items
     spreadsheet = open_spreadsheet
-    header = spreadsheet.row(5)
-    (6..spreadsheet.last_row).map do |i|
+    header = spreadsheet.row(1)
+    (2..spreadsheet.last_row).map do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      item = Item.find_by_id(row["id"]) || Item.new
+      item = Attendance.find_by_id(row["id"]) || Attendance.new
       item.attributes = row.to_hash
       item
     end
@@ -37,6 +37,7 @@ class ItemsImport
   end
 
   def save
+    print('amaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaanj')
     if imported_items.map(&:valid?).all?
       imported_items.each(&:save!)
       true

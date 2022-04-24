@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'items_imports/new'
   get 'items_imports/create'
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'users/registrations'}
   root"home#show"
 
   resources :posts do
@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get '/admin/attendance/import' , to: 'attendance#import'
 
   resources :items_imports ,only: [:index, :new, :create] , path: '/admin/items'
+
+  resources :user_profile ,only: [:show,:create,:new] , path: '/user_profile'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
