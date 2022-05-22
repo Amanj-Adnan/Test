@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get 'items_imports/new'
   get 'items_imports/create'
   devise_for :users, :controllers => { :registrations => 'users/registrations'}
-  root"home#show"
+
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
 
   resources :posts do
     resources :likes
