@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :likes
   end
 
-
+  get '/admin/users', to: 'users/users#index'
 
 
 
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
 
   get '/admin/create_super_user', to: 'super_user/super_user#new'
+  delete '/admin/super_user', to: 'super_user/super_user#destroy'
 
 
 

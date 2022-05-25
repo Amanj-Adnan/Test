@@ -20,7 +20,7 @@
       <input class="border-2 w-96 border-gray-100 bg-gray-800 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
              type="search" name="search" placeholder="Search">
 
-      <%= link_to "LOGOUT" , admin_attendance_path, class:'text-gray-100  p-4 pt-2 w-max' %>
+      <%= link_to "sign out" , destroy_user_session_path, method: :delete, class:'text-gray-100  p-4 pt-2 w-max' %>
     </div>
 
     <div class="  m-3 text-black text-3xl font-bold">
