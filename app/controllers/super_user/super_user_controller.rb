@@ -1,5 +1,6 @@
 class  SuperUser::SuperUserController < ApplicationController
   before_action :authorized_admin
+
   layout('admin' )
 
   def index
@@ -28,7 +29,15 @@ class  SuperUser::SuperUserController < ApplicationController
   end
 
   def destroy
-    session[:admin_id]=nil
-    redirect_to root_path
+
+    if (user_signed_in?)
+      sign_out(current_user)
+      session[:admin_id]=nil
+      redirect_to root_path
+    else
+      session[:admin_id]=nil
+      redirect_to root_path
+    end
   end
+
 end

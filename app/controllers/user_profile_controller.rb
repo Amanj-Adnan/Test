@@ -15,7 +15,6 @@ class UserProfileController < ApplicationController
     @user_profile=UserProfile.new
   end
   def show
-
   end
 
 

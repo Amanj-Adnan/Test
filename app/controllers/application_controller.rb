@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(user)
     if ( session[:admin_id]!=nil)
-      session[:user_id]=nil
       admin_users_path
     else
       user_profile_path(current_user.id)
