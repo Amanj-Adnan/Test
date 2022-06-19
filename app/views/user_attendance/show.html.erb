@@ -1,0 +1,68 @@
+
+<% content_for :name do %>
+
+  <p class="text-xl text-gray-700"> Welcome <%= @user.email %></p>
+
+<% end %>
+
+
+<% content_for :admin_content do %>
+  <div class="overflow-auto">
+
+    <div class="container  mt-10 justify-center mx-auto">
+
+
+
+      <div class=" border-b border-gray-200 shadow ">
+        <table class="divide-y  divide-gray-300 ">
+          <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-2  text-gray-700">
+              ID
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Name
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Date
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Exception
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Clock_in
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Clock_out
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Break_in
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Break_out
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Break_duration
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Comment
+            </th>
+
+
+          </tr>
+          </thead>
+
+          <%= render partial: "user_attendance/attendances", collection: @attendance %>
+
+        </table>
+      </div>
+
+
+    </div>
+
+    </div>
+<% end %>

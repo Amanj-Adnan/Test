@@ -6,11 +6,8 @@ class CreateUserProfiles < ActiveRecord::Migration[6.1]
       t.string :adress
       t.date :date_of_berth
 
-
       t.date :start_date
       t.date :end_of_contarct
-
-
       t.timestamps
     end
   end

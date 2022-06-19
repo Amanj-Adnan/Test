@@ -10,4 +10,7 @@ class User < ApplicationRecord
   has_many :attendances, dependent: :destroy
 
 
+  scope :without_user_profiles, -> { where('NOT EXISTS(SELECT 1 FROM user_profiles WHERE user_id = users.id)') }
+
+
 end
