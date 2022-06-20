@@ -1,3 +1,5 @@
+
+
 <% content_for :name do %>
 
   <p class="text-xl text-gray-700"> Welcome <%= @user.email %></p>
@@ -15,7 +17,10 @@
         <div>
           <h1 class="text-slate-100 text-4xl font-bold my-2"><%= @user.user_profile.nmae %></h1>
           <p class="text-slate-100 text-lg tracking-wide mb-6 md:max-w-lg">Full stack web developer and online instructor, specializiing in mostly JS, but also write Python, PHP and some other stuff.</p>
-           </div>
+          <h1 class="text-slate-100 text-3xl font-bold my-2">Position:  <%= @user.user_profile.position %></h1>
+          <h1 class="text-slate-100 text-2xl font-bold my-2">Line Manager:  <%= @user.user_profile.line_manager %></h1>
+        </div>
+
       </div>
     </div>
     <div class="mt-8 sm:grid grid-cols-3 sm:space-x-4">
@@ -28,51 +33,26 @@
         <h2 class="text-slate-100 text-2xl font-semibold"><%=@user.user_profile.working_country%>:<%=@user.user_profile.working_city%>:<%=@user.user_profile.working_office%></h2>
       </div>
     </div>
-    <div class="sm:grid lg:grid-cols-4 grid-cols-2 sm:gap-x-4">
-      <div class="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
-        <div>
-          <span class="text-md text-slate-400">Followers</span>
-          <h1 class="text-3xl font-bold text-slate-100">47155</h1>
-        </div>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-        </div>
-      </div>
-      <div class="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
-        <div>
-          <span class="text-md text-slate-400">Following</span>
-          <h1 class="text-3xl font-bold text-slate-100">9322</h1>
-        </div>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-        </div>
-      </div>
-      <div class="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
-        <div>
-          <span class="text-md text-slate-400">Public Rpos</span>
-          <h1 class="text-3xl font-bold text-slate-100">236</h1>
-        </div>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-          </svg>
-        </div>
-      </div>
-      <div class="flex justify-between items-center bg-slate-600 p-6 rounded-md mb-4">
-        <div>
-          <span class="text-md text-slate-400">Public Gists</span>
-          <h1 class="text-3xl font-bold text-slate-100">40</h1>
-        </div>
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-          </svg>
-        </div>
-      </div>
+    <div><p class="m-3 text-2xl font-bold">Leave Balance</p></div>
+    <div class="w-2/3 mt-2">
+      <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#262626, #262626);background-size: 90% 100%;background-repeat: no-repeat;"  disabled/>
+      <output id="rangevalue" class="mx-4" style=" background: #262626;">18</output>
+      <span>Manual Leave</span>
+    </div>
+    <div class="w-2/3 mt-2">
+      <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#990000, #990000);background-size: 60% 100%;background-repeat: no-repeat;"  disabled/>
+      <output id="rangevalue" class="mx-4" style=" background: #990000;">3</output>
+      <span>Sick Leave</span>
+    </div>
+
+    <div class="w-2/3 mt-2">
+      <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
+      <output id="rangevalue" class="mx-4" style=" background: #006600;">5</output>
+      <span>Other Leave</span>
     </div>
   </div>
+
+
 <% end %>
+
+
