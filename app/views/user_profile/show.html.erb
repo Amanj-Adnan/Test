@@ -34,22 +34,64 @@
       </div>
     </div>
     <div><p class="m-3 text-2xl font-bold">Leave Balance</p></div>
-    <div class="w-2/3 mt-2">
-      <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#262626, #262626);background-size: 90% 100%;background-repeat: no-repeat;"  disabled/>
-      <output id="rangevalue" class="mx-4" style=" background: #262626;">18</output>
-      <span>Manual Leave</span>
-    </div>
-    <div class="w-2/3 mt-2">
-      <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#990000, #990000);background-size: 60% 100%;background-repeat: no-repeat;"  disabled/>
-      <output id="rangevalue" class="mx-4" style=" background: #990000;">3</output>
-      <span>Sick Leave</span>
-    </div>
 
-    <div class="w-2/3 mt-2">
-      <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
-      <output id="rangevalue" class="mx-4" style=" background: #006600;">5</output>
-      <span>Other Leave</span>
-    </div>
+
+      <% if user_signed_in? %>
+      <div class="w-2/3 mt-2">
+        <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#262626, #262626);background-size: 90% 100%;background-repeat: no-repeat;"  disabled/>
+        <output id="rangevalue" class="mx-4" style=" background: #262626;"><%=@user.leave.annual_leave%></output>
+        <span>Annual Leave</span>
+        </div>
+        <div class="w-2/3 mt-2">
+          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#990000, #990000);background-size: 60% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #990000;">3</output>
+          <span>Sick Leave</span>
+        </div>
+
+      <% if @user.user_profile.gender == 'female' %>
+        <div class="w-2/3 mt-2">
+          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #006600;"><%=@user.leave.maternity_leave%></output>
+          <span>Maternity Leave</span>
+        </div>
+      <%else %>
+        <div class="w-2/3 mt-2">
+          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #006600;">5</output>
+          <span>Paternity Leave</span>
+        </div>
+      <%end %>
+
+        <div class="w-2/3 mt-2">
+          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #006600;">5</output>
+          <span>Marriage Leave</span>
+        </div>
+
+        <div class="w-2/3 mt-2">
+          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #006600;">5</output>
+          <span>Bereavement Leave</span>
+        </div>
+
+        <div class="w-2/3 mt-2">
+          <input type="range" value="0" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 0% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #006600;">0</output>
+          <span>Compensatory Off</span>
+        </div>
+        <div class="w-2/3 mt-2">
+          <input type="range" value="0" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 0% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #006600;">0</output>
+          <span>Loss Of Pay Leave</span>
+        </div>
+        <div class="w-2/3 mt-2">
+          <input type="range" value="0" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 0% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #006600;">0</output>
+          <span>Hourly Leave</span>
+        </div>
+
+      <%end %>
+
   </div>
 
 

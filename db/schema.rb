@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_15_142421) do
+ActiveRecord::Schema.define(version: 2022_06_21_125644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,22 @@ ActiveRecord::Schema.define(version: 2022_06_15_142421) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "leaves", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "annual_leave"
+    t.integer "sick_leave"
+    t.integer "maternity_leave"
+    t.integer "marriage_leave"
+    t.integer "paternity_leave"
+    t.integer "bereavement_leave"
+    t.integer "compensatory_off_leave"
+    t.integer "loss_of_pay_leave"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "hourly_leave"
+    t.index ["user_id"], name: "index_leaves_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -115,7 +131,7 @@ ActiveRecord::Schema.define(version: 2022_06_15_142421) do
     t.string "working_country"
     t.string "working_office"
     t.string "line_manager"
-    t.float "leave_balance"
+    t.string "gender"
     t.index ["user_id"], name: "index_user_profiles_on_user_id", unique: true
   end
 
