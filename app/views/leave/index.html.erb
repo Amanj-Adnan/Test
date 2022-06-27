@@ -1,0 +1,68 @@
+
+<% content_for :name do %>
+
+  <p class="flex justify-center text-xl font-bold text-gray-700"> Leave Applications</p>
+
+<% end %>
+
+
+<% content_for :admin_content do %>
+  <div class="overflow-auto">
+
+    <div class="container  mt-10 justify-center mx-auto">
+
+
+
+      <div class=" border-b border-gray-200 shadow ">
+        <table class="divide-y  divide-gray-300 ">
+          <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-2  text-gray-700">
+              ID
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Name
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Application Date
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Leave Start Date
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Leave End Date
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Leave Type
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Pre Approve
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Approve
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Reason
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Certificate
+            </th>
+
+
+          </tr>
+          </thead>
+
+          <%= render partial: "leave/leave_requests", collection: @leave_requests%>
+
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+<% end %>

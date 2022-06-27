@@ -1,0 +1,64 @@
+<tbody class="bg-white divide-y divide-gray-300">
+<tr class="whitespace-nowrap">
+  <td class="px-6 py-4">
+    <div class="text-sm text-gray-900">
+      <%=leave_requests.user_id %>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm text-gray-500"> <%=leave_requests.user.user_profile.nmae%></div>
+  </td>
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_requests.application_date %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_requests.leave_start_date %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_requests.leave_end_date %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_requests.leave_type %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_requests.pre_approve %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if leave_requests.approve.nil? %>
+      <%= "" %>
+    <%else %>
+    <%=leave_requests.approve %>
+    <%end %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if leave_requests.reason.nil? %>
+      <%= "" %>
+    <%else %>
+      <%=leave_requests.reason %>
+    <%end %>
+  </td>
+
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if leave_requests.certificate.nil? %>
+      <%= "" %>
+    <%else %>
+      <%=leave_requests.certificate%>
+    <%end %>
+  </td>
+
+
+</tr>
+
+</tbody>

@@ -1,0 +1,100 @@
+<% content_for :name do %>
+  <div class="flex justify-center w-auto">Leave Application</div>
+
+  <div class="flex justify-center w-auto">
+    <% flash.each do |type, msg| %>
+      <div class="bg-red-100 border text-md border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong class="font-bold"><%=type %>!</strong>
+        <span class="block sm:inline"><%=msg %></span>
+
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
+
+
+
+
+
+<% content_for :admin_content do %>
+
+  <div class="mt-12">
+
+    <div class="flex items-center justify-center  ">
+      <div class=" w-5/6 space-y-8">
+        <div>
+          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Leave Application
+          </h2>
+        </div>
+
+        <%= form_with model: @leave_request ,url:user_leave_application_path , html: {class:"mt-8  grid grid-cols-2 gap-4"} do |f| %>
+
+          <div class="field">
+            <%= f.label :"Line Manager" %><br />
+            <%= f.text_field :line_manager_id, value: 1 , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+          </div>
+
+          <div class="field">
+            <%= f.label :"HR" %><br />
+            <%= f.text_field :hr_officer_id, value: 2 , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+          </div>
+
+
+          <div class="field">
+            <%= f.label :"Application Date" %><br />
+            <%= f.date_field :application_date, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+          </div>
+
+          <div class="">
+            <p class="font-bold mb-2"> Leave duration</p>
+            <div   class="flex">
+              <div class="flex">
+                <p class="w-auto px-2 py-2">Start from</p>
+                <%= f.datetime_field :leave_start_date, class:"appearance-none rounded-none relative block w-auto  py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+              </div>
+
+
+              <div class="flex">
+                <p class="w-auto px-2 py-2">to</p>
+                <%= f.datetime_field :leave_end_date, class:"appearance-none rounded-none relative block w-auto py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+
+          <div class="</div">
+            <%= f.label :"Application type" %><br />
+            <% options =  options_for_select([['Annual Leave', 'annual_leave'], ['Sick Leave', 'sick_leave'], ['Maternity Leave', 'maternity_leave'], ['Paternity Leave', 'paternity_leave'], ['Bereavement Leave', 'bereavement_leave'], ['Loss of pay Leave', 'loss_of_pay_leave'], ['Compensatory Off', 'compensatory_off_leave'], ['Half Day Leave', 'hourly_leave'], ['1 Hour Leave', 'hourly_leave'], ['2 Hours Leave', 'hourly_leave'], ['3 Hours Leave', 'hourly_leave']]) %>
+            <%= f.select :leave_type,  options,{ include_blank: true } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+          </div>
+
+          <div class="field">
+            <%= f.label :"Reason"%><br />
+            <%= f.text_field :reason, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+          </div>
+
+          <div class="field">
+            <%= f.label :"Certificate"%><br />
+            <%= f.file_field :certificate, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+          </div>
+
+
+          <div class="w-1/2">
+            <%= f.submit "Create Profile" ,class:"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
+          </div>
+        <% end %>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+<% end %>

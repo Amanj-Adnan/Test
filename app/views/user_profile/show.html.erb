@@ -38,55 +38,55 @@
 
       <% if user_signed_in? %>
       <div class="w-2/3 mt-2">
-        <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#262626, #262626);background-size: 90% 100%;background-repeat: no-repeat;"  disabled/>
+        <input type="range" value="<%=@user.leave.annual_leave%>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#262626, #262626);background-size: <%=((1.0 *@user.leave.annual_leave/21)*100).to_i %>% 100%;background-repeat: no-repeat;"  disabled/>
         <output id="rangevalue" class="mx-4" style=" background: #262626;"><%=@user.leave.annual_leave%></output>
         <span>Annual Leave</span>
         </div>
         <div class="w-2/3 mt-2">
-          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#990000, #990000);background-size: 60% 100%;background-repeat: no-repeat;"  disabled/>
-          <output id="rangevalue" class="mx-4" style=" background: #990000;">3</output>
+          <input type="range" value="<%=@user.leave.sick_leave%>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#990000, #990000);background-size: <%=((1.0 *@user.leave.sick_leave/6)*100).to_i %>% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #990000;"><%=@user.leave.sick_leave%></output>
           <span>Sick Leave</span>
         </div>
 
       <% if @user.user_profile.gender == 'female' %>
         <div class="w-2/3 mt-2">
-          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
-          <output id="rangevalue" class="mx-4" style=" background: #006600;"><%=@user.leave.maternity_leave%></output>
+          <input type="range" value="<%=@user.leave.maternity_leave%>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#0052cc, #0052cc);background-size: <%=((1.0 *@user.leave.maternity_leave/60)*100).to_i %>% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #0052cc;"><%=@user.leave.maternity_leave%></output>
           <span>Maternity Leave</span>
         </div>
       <%else %>
         <div class="w-2/3 mt-2">
-          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
-          <output id="rangevalue" class="mx-4" style=" background: #006600;">5</output>
+          <input type="range" value="<%= @user.leave.paternity_leave %>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#0052cc, #0052cc);background-size: <%=((1.0 *@user.leave.paternity_leave/2)*100).to_i %>% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #0052cc;"><%= @user.leave.paternity_leave %></output>
           <span>Paternity Leave</span>
         </div>
       <%end %>
 
         <div class="w-2/3 mt-2">
-          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
-          <output id="rangevalue" class="mx-4" style=" background: #006600;">5</output>
+          <input type="range" value="<%= @user.leave.marriage_leave %>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: <%=((1.0 *@user.leave.marriage_leave/5)*100).to_i %>% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #006600;"><%= @user.leave.marriage_leave %></output>
           <span>Marriage Leave</span>
         </div>
 
         <div class="w-2/3 mt-2">
-          <input type="range" value="35" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 100% 100%;background-repeat: no-repeat;"  disabled/>
-          <output id="rangevalue" class="mx-4" style=" background: #006600;">5</output>
+          <input type="range" value="<%= @user.leave.bereavement_leave %>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#000000, #000000);background-size: <%=((1.0 *@user.leave.bereavement_leave/2)*100).to_i %>% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #000000;"><%= @user.leave.bereavement_leave %></output>
           <span>Bereavement Leave</span>
         </div>
 
         <div class="w-2/3 mt-2">
-          <input type="range" value="0" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 0% 100%;background-repeat: no-repeat;"  disabled/>
-          <output id="rangevalue" class="mx-4" style=" background: #006600;">0</output>
+          <input type="range" value="<%=@user.leave.compensatory_off_leave %>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#994d00, #994d00);background-size: <%= @user.leave.compensatory_off_leave>0?100:0 %>% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #994d00;"><%= @user.leave.compensatory_off_leave %></output>
           <span>Compensatory Off</span>
         </div>
         <div class="w-2/3 mt-2">
-          <input type="range" value="0" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 0% 100%;background-repeat: no-repeat;"  disabled/>
-          <output id="rangevalue" class="mx-4" style=" background: #006600;">0</output>
+          <input type="range" value="<%= @user.leave.loss_of_pay_leave %>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#660033, #660033);background-size: <%= @user.leave.loss_of_pay_leave>0?100:0 %>% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #660033;"><%= @user.leave.loss_of_pay_leave %></output>
           <span>Loss Of Pay Leave</span>
         </div>
         <div class="w-2/3 mt-2">
-          <input type="range" value="0" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#006600, #006600);background-size: 0% 100%;background-repeat: no-repeat;"  disabled/>
-          <output id="rangevalue" class="mx-4" style=" background: #006600;">0</output>
+          <input type="range" value="<%= @user.leave.hourly_leave %>" min="0" max="100" class="" style="-webkit-appearance: none;width: 75%;height: 7px;background: rgba(255, 255, 255, 0.9);border-radius: 5px;background-image: linear-gradient(#808000, #808000);background-size: <%= @user.leave.hourly_leave>0?100:0 %>% 100%;background-repeat: no-repeat;"  disabled/>
+          <output id="rangevalue" class="mx-4" style=" background: #808000;"><%= @user.leave.hourly_leave %></output>
           <span>Hourly Leave</span>
         </div>
 

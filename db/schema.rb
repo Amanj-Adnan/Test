@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_21_125644) do
+ActiveRecord::Schema.define(version: 2022_06_25_141448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,25 @@ ActiveRecord::Schema.define(version: 2022_06_21_125644) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "leave_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "line_manager_id"
+    t.date "application_date"
+    t.datetime "leave_start_date"
+    t.datetime "leave_end_date"
+    t.string "leave_type"
+    t.string "pre_approve", default: "pending"
+    t.string "approve"
+    t.string "reason"
+    t.string "certificate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "hr_officer_id"
+    t.index ["hr_officer_id"], name: "index_leave_requests_on_hr_officer_id"
+    t.index ["line_manager_id"], name: "index_leave_requests_on_line_manager_id"
+    t.index ["user_id"], name: "index_leave_requests_on_user_id"
   end
 
   create_table "leaves", force: :cascade do |t|
@@ -150,6 +169,9 @@ ActiveRecord::Schema.define(version: 2022_06_21_125644) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attendances", "users"
+  add_foreign_key "leave_requests", "users"
+  add_foreign_key "leave_requests", "users", column: "hr_officer_id"
+  add_foreign_key "leave_requests", "users", column: "line_manager_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "permissions", "roles"

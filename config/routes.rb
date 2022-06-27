@@ -53,5 +53,12 @@ Rails.application.routes.draw do
   resources :user_profile ,only: [:show,:create,:new] , path: '/user_profile'
   get '/user_attendance/attendances' , to: 'user_attendance#show'
 
+
+
+
+  get 'user/leaves' , to: 'leave#index'
+  get 'user/leave_application' , to: 'leave_requests#new'
+  post 'user/leave_application' , to: 'leave_requests#create'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
