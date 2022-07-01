@@ -3,7 +3,8 @@ class LeaveRequestsController < ApplicationController
   before_action :authenticate_user!
   layout('user' )
 
-
+  #so i have to care about hourly and annual leave from here.....
+  # also I have to count balances of each leave type
   def new
     @leave_request = LeaveRequest.new
   end

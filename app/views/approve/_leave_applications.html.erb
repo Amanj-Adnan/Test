@@ -1,0 +1,77 @@
+<tbody class="bg-white divide-y divide-gray-300">
+<tr class="whitespace-nowrap">
+  <td class="px-6 py-4">
+    <div class="text-sm text-gray-900">
+      <%=leave_applications.user_id %>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm text-gray-500"> <%=leave_applications.user.user_profile.nmae%></div>
+  </td>
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_applications.application_date %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_applications.leave_start_date %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_applications.leave_end_date %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_applications.leave_type %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=leave_applications.pre_approve %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if leave_applications.approve.nil? %>
+      <%= "" %>
+    <%else %>
+      <%=leave_applications.approve %>
+    <%end %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if leave_applications.reason.nil? %>
+      <%= "" %>
+    <%else %>
+      <%=leave_applications.reason %>
+    <%end %>
+  </td>
+
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if leave_applications.certificate.nil? %>
+      <%= "" %>
+    <%else %>
+      <%=leave_applications.certificate%>
+    <%end %>
+  </td>
+
+  <td class="flex px-6 py-4">
+
+    <%= form_with  model: leave_applications,  url: admin_leave_applications_approve_path(id:leave_applications.id), method: :patch, html: { class: "mx-2" } do |f| %>
+      <%= f.submit "Approve" , class:"px-4 py-1 text-sm text-green-400 bg-green-200 rounded-full" %>
+    <% end %>
+
+
+    <%= form_for leave_applications,  url: admin_leave_applications_reject_path(leave_applications), method: :patch, html: { class: "mx-2" } do |f| %>
+      <%= f.submit "Reject" , class:"px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full" %>
+    <% end %>
+
+  </td>
+
+
+</tr>
+
+</tbody>

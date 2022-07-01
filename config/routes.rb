@@ -60,5 +60,14 @@ Rails.application.routes.draw do
   get 'user/leave_application' , to: 'leave_requests#new'
   post 'user/leave_application' , to: 'leave_requests#create'
 
+
+
+
+
+  get 'admin/leave_applications' , to:"approve#index"
+  patch 'admin/leave_applications/approve' , to:"approve#approve"
+  patch 'admin/leave_applications/reject' , to:"approve#reject"
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
