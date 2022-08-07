@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
 # Use postgresql as the database for Active Record
-gem 'pg', '~>  1.2.3'
+gem 'pg', '~> 1.4', '>= 1.4.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -70,6 +70,11 @@ gem 'roo', '~> 2.9'
 gem 'caxlsx'
 gem 'caxlsx_rails'
 gem 'rubyzip', '~> 2.3', '>= 2.3.2'
+gem 'wdm', '~> 0.1.1'
+
+gem 'net-smtp'
+gem 'net-imap'
+gem 'net-pop'
 
 
-
+gem 'workflow', '~> 3.0'

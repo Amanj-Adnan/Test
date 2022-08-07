@@ -3,14 +3,17 @@ Rails.application.routes.draw do
   get 'items_imports/new'
   get 'items_imports/create'
   devise_for :users, :controllers => { :registrations => 'users/registrations'}
-
+  
+  # devise_scope :user do
+  #   post 'users/sign_up', to: 'devise/registrations#create'
+  #  end
   devise_scope :user do
     root to: "devise/sessions#new"
   end
 
-  resources :posts do
-    resources :likes
-  end
+  # resources :posts do
+  #   resources :likes
+  # end
 
   get '/admin/users', to: 'users/users#index'
 
@@ -68,6 +71,9 @@ Rails.application.routes.draw do
   patch 'admin/leave_applications/approve' , to:"approve#approve"
   patch 'admin/leave_applications/reject' , to:"approve#reject"
 
+ 
 
+  get 'admin/user_workflow' , to:"user_workflows#new"
+  post 'admin/user_workflow' , to:"user_workflows#create"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

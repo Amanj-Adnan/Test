@@ -16,99 +16,99 @@ class ApproveController < ApplicationController
     @num_of_days=(@date2-@date1).to_i + 1
     @num_of_hours=((@time2 - @time1) / 1.hours).to_i
 
-    # if @application_type  == "annual_leave"
-    #
-    #   @new_balance = @leave.user.leave.annual_leave.to_i - @num_of_days
-    #   if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:annual_leave,@new_balance)
-    #     flash[:alert] = "Leave application approved"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   else
-    #     flash[:alert] = "Something went Wrong"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   end
-    # elsif @application_type  =="sick_leave"
-    #   @new_balance = @leave.user.leave.sick_leave.to_i - @num_of_days
-    #   if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:sick_leave,@new_balance)
-    #     flash[:alert] = "Leave application approved"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   else
-    #     flash[:alert] = "Something went Wrong"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   end
-    # elsif @application_type  =="maternity_leave"
-    #   @new_balance = @leave.user.leave.maternity_leave - @num_of_days
-    #   if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:maternity_leave,@new_balance)
-    #     flash[:alert] = "Leave application approved"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   else
-    #     flash[:alert] = "Something went Wrong"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   end
-    # elsif @application_type  =="marriage_leave"
-    #   @new_balance = @leave.user.leave.marriage_leave - @num_of_days
-    #   if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:marriage_leave,@new_balance)
-    #     flash[:alert] = "Leave application approved"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   else
-    #     flash[:alert] = "Something went Wrong"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   end
-    # elsif @application_type  =="paternity_leave"
-    #   @new_balance = @leave.user.leave.paternity_leave - @num_of_days
-    #   if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:paternity_leave,@new_balance)
-    #     flash[:alert] = "Leave application approved"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   else
-    #     flash[:alert] = "Something went Wrong"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   end
-    # elsif @application_type  =="bereavement_leave"
-    #   @new_balance = @leave.user.leave.bereavement_leave - @num_of_days
-    #   if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:bereavement_leave,@new_balance)
-    #     flash[:alert] = "Leave application approved"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   else
-    #     flash[:alert] = "Something went Wrong"
-    #     redirect_back fallback_location:admin_leave_applications_path
-    #   end
-    #
-    #
-    # elsif @application_type  =="compensatory_off_leave"
-    # elsif @application_type  =="loss_of_pay_leave"
-    #
-    #
-    #
-    # elsif @application_type  =="hourly_leave"
-    #   if @leave.user.leave.hourly_leave < @num_of_hours
-    #     @hours= 8
-    #     @leave.user.leave.update_attribute(:hourly_leave,@hours)
-    #     @new_balance = @leave.user.leave.hourly_leave - @num_of_hours
-    #     if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:hourly_leave,@new_balance)
-    #       @new_annual_balance = @leave.user.leave.annual_leave.to_i - 1
-    #       @leave.user.leave.update_attribute(:annual_leave,@new_annual_balance)
-    #       flash[:alert] = "Leave application approved"
-    #       redirect_back fallback_location:admin_leave_applications_path
-    #     else
-    #       flash[:alert] = "Something went Wrong"
-    #       redirect_back fallback_location:admin_leave_applications_path
-    #     end
-    #   else
-    #     @new_balance = @leave.user.leave.hourly_leave - @num_of_hours
-    #     if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:hourly_leave,@new_balance)
-    #       flash[:alert] = "Leave application approved"
-    #       redirect_back fallback_location:admin_leave_applications_path
-    #     else
-    #       flash[:alert] = "Something went Wrong"
-    #       redirect_back fallback_location:admin_leave_applications_path
-    #     end
-    #   end
-    # else
-    #
-    # end
+    if @application_type  == "annual_leave"
+    
+      @new_balance = @leave.user.leave.annual_leave.to_i - @num_of_days
+      if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:annual_leave,@new_balance)
+        flash[:alert] = "Leave application approved"
+        redirect_back fallback_location:admin_leave_applications_path
+      else
+        flash[:alert] = "Something went Wrong"
+        redirect_back fallback_location:admin_leave_applications_path
+      end
+    elsif @application_type  =="sick_leave"
+      @new_balance = @leave.user.leave.sick_leave.to_i - @num_of_days
+      if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:sick_leave,@new_balance)
+        flash[:alert] = "Leave application approved"
+        redirect_back fallback_location:admin_leave_applications_path
+      else
+        flash[:alert] = "Something went Wrong"
+        redirect_back fallback_location:admin_leave_applications_path
+      end
+    elsif @application_type  =="maternity_leave"
+      @new_balance = @leave.user.leave.maternity_leave - @num_of_days
+      if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:maternity_leave,@new_balance)
+        flash[:alert] = "Leave application approved"
+        redirect_back fallback_location:admin_leave_applications_path
+      else
+        flash[:alert] = "Something went Wrong"
+        redirect_back fallback_location:admin_leave_applications_path
+      end
+    elsif @application_type  =="marriage_leave"
+      @new_balance = @leave.user.leave.marriage_leave - @num_of_days
+      if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:marriage_leave,@new_balance)
+        flash[:alert] = "Leave application approved"
+        redirect_back fallback_location:admin_leave_applications_path
+      else
+        flash[:alert] = "Something went Wrong"
+        redirect_back fallback_location:admin_leave_applications_path
+      end
+    elsif @application_type  =="paternity_leave"
+      @new_balance = @leave.user.leave.paternity_leave - @num_of_days
+      if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:paternity_leave,@new_balance)
+        flash[:alert] = "Leave application approved"
+        redirect_back fallback_location:admin_leave_applications_path
+      else
+        flash[:alert] = "Something went Wrong"
+        redirect_back fallback_location:admin_leave_applications_path
+      end
+    elsif @application_type  =="bereavement_leave"
+      @new_balance = @leave.user.leave.bereavement_leave - @num_of_days
+      if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:bereavement_leave,@new_balance)
+        flash[:alert] = "Leave application approved"
+        redirect_back fallback_location:admin_leave_applications_path
+      else
+        flash[:alert] = "Something went Wrong"
+        redirect_back fallback_location:admin_leave_applications_path
+      end
+    
+    
+    elsif @application_type  =="compensatory_off_leave"
+    elsif @application_type  =="loss_of_pay_leave"
+    
+    
+    
+    elsif @application_type  =="hourly_leave"
+      if @leave.user.leave.hourly_leave < @num_of_hours
+        @hours= 8
+        @leave.user.leave.update_attribute(:hourly_leave,@hours)
+        @new_balance = @leave.user.leave.hourly_leave - @num_of_hours
+        if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:hourly_leave,@new_balance)
+          @new_annual_balance = @leave.user.leave.annual_leave.to_i - 1
+          @leave.user.leave.update_attribute(:annual_leave,@new_annual_balance)
+          flash[:alert] = "Leave application approved"
+          redirect_back fallback_location:admin_leave_applications_path
+        else
+          flash[:alert] = "Something went Wrong"
+          redirect_back fallback_location:admin_leave_applications_path
+        end
+      else
+        @new_balance = @leave.user.leave.hourly_leave - @num_of_hours
+        if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:hourly_leave,@new_balance)
+          flash[:alert] = "Leave application approved"
+          redirect_back fallback_location:admin_leave_applications_path
+        else
+          flash[:alert] = "Something went Wrong"
+          redirect_back fallback_location:admin_leave_applications_path
+        end
+      end
+    else
+    
+    end
 
-    puts(">>>>>>>>>>>>>>>>>>")
-    puts(@leave.map)
-    puts("<<<<<<<<<<<<<<<<<<")
+    # puts(">>>>>>>>>>>>>>>>>>")
+    # puts(@leave.map)
+    # puts("<<<<<<<<<<<<<<<<<<")
 
   end
 

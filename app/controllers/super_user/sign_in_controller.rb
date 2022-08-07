@@ -13,6 +13,7 @@ class SuperUser::SignInController <  ApplicationController
       session[:admin_id] = @admin.id
       redirect_to admin_path
     else
+      flash[:alert] = "Something went wrong please try again"
       render "super_users/sign_in/new"
     end
   end

@@ -3,7 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  
+  
   has_many :posts , dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one :user_profile, dependent: :destroy
@@ -12,6 +14,8 @@ class User < ApplicationRecord
   has_many :leave_requests, dependent: :destroy
   has_one :line_manager ,class_name: "LeaveRequest", foreign_key: "line_manager_id", dependent: :destroy
   has_one :hr_officer ,class_name: "LeaveRequest", foreign_key: "hr_officer_id", dependent: :destroy
+  has_many :work_ins
+  has_many :user_workflows, through: :work_ins
 
 
 

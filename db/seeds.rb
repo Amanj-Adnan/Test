@@ -6,13 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@user_id = User.first.id
+# @user_id = User.first.id
 
-15.times do |index|
-  Attendance.create!(user_id: @user_id,
-                     date: Faker::Date.between(from: '2021-03-01', to: '2021-03-31'),
-                     exception: Faker::String.random,
-  )
-end
+# 15.times do |index|
+#   Attendance.create!(user_id: @user_id,
+#                      date: Faker::Date.between(from: '2021-03-01', to: '2021-03-31'),
+#                      exception: Faker::String.random,
+#   )
+# end
 
 p "Created #{Attendance.count} movies"
