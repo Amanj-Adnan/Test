@@ -70,7 +70,7 @@ gem 'roo', '~> 2.9'
 gem 'caxlsx'
 gem 'caxlsx_rails'
 gem 'rubyzip', '~> 2.3', '>= 2.3.2'
-gem 'wdm', '~> 0.1.1'
+
 
 gem 'net-smtp'
 gem 'net-imap'
