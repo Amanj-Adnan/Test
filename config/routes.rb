@@ -75,5 +75,20 @@ Rails.application.routes.draw do
 
   get 'admin/user_workflow' , to:"user_workflows#new"
   post 'admin/user_workflow' , to:"user_workflows#create"
+
+
+  get "admin/country", to:"countries#new"
+  post "admin/country", to:"countries#create"
+
+
+
+  get 'admin/cities', to:"cities#new"
+  post "admin/cities", to:"cities#create"
+
+
+
+  get 'admin/office', to:"offices#new"
+  post 'admin/office', to:"offices#create"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

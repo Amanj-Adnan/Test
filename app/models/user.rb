@@ -14,8 +14,7 @@ class User < ApplicationRecord
   has_many :leave_requests, dependent: :destroy
   has_one :line_manager ,class_name: "LeaveRequest", foreign_key: "line_manager_id", dependent: :destroy
   has_one :hr_officer ,class_name: "LeaveRequest", foreign_key: "hr_officer_id", dependent: :destroy
-  has_many :work_ins
-  has_many :user_workflows, through: :work_ins
+  belongs_to :user_workflow, optional: true
 
 
 

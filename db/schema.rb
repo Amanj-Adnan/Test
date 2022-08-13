@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_01_195517) do
+ActiveRecord::Schema.define(version: 2022_08_12_124331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,20 @@ ActiveRecord::Schema.define(version: 2022_08_01_195517) do
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id", null: false
+    t.index ["country_id"], name: "index_cities_on_country_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "leave_requests", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "line_manager_id"
@@ -99,6 +113,16 @@ ActiveRecord::Schema.define(version: 2022_08_01_195517) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "address"
+    t.string "location"
+    t.bigint "city_id", null: false
+    t.index ["city_id"], name: "index_offices_on_city_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -168,17 +192,10 @@ ActiveRecord::Schema.define(version: 2022_08_01_195517) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_workflow_id", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "work_ins", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "user_workflow_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_work_ins_on_user_id"
-    t.index ["user_workflow_id"], name: "index_work_ins_on_user_workflow_id"
+    t.index ["user_workflow_id"], name: "index_users_on_user_workflow_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

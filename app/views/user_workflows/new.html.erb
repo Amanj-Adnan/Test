@@ -12,39 +12,45 @@
 <% end %>
 
 
-
 <% content_for :admin_content do %>
+  <div class="m-3">
+        <div class="m-3">
 
+        
+            <%= form_with model: @users ,url:admin_user_workflow_path , remote: true , html: {class:"mt-8  flex "} do |f| %>
+              <div class="flex flex-col  w-full justify-center items-center">
 
+                <div class="w-1/2">
+                  <%= f.label :"Workflow Name:"%><br />
+                  <%= f.text_field :workflow_name, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+                </div>
 
-    
-         <%= form_with model: @users ,url:admin_user_workflow_path , remote: true , html: {class:"mt-8  grid grid-cols-2 gap-4"} do |f| %>
-          <div class="container">
+                <div class="w-1/2">
+                  <%= f.label :"Workflow Manger:"%><br />
+                  <%= f.text_field :workflow_manager, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+                </div>
 
-            <select multiple data-multi-select-plugin name="user[email][]" id="user_id"  >
-            <% if !@users.blank? %>
-                <% for user in @users %>
-                    <option value="<%=user.email %>" ><%=user.email %></option>
-                <% end %>
+                <div class="container">
+                  <%= f.label :"Employees:"%><br />
+                  <select multiple data-multi-select-plugin name="user[email][]" id="user_id"  >
+                    <% if !@users.blank? %>
+                      <% for user in @users %>
+                        <option value="<%=user.email %>" ><%=user.email %></option>
+                      <% end %>
+                    <% end %>
+                  </select>
+                </div>
+                   <div class="m-3">
+                     <%= f.submit "Create Profile" ,class:"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+
+                   </div>
+              </div>
             <% end %>
-            </select>
+        </div>
     
-           </div>
-
-           <% options = options_from_collection_for_select(@users, 'id', 'email' )  %>
-           <%= f.select :id, options,{ include_blank: true } ,class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm", multiple: true   %>
-          
-
-
-          <%= f.submit "Create Profile" ,class:"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-         
-        <% end %>
     </div>
-  
- </div>
 
- <script type="text/javascript">
-
+ <script type="text/javascript" defer >
 
 // Initialize function, create initial tokens with itens that are already selected by the user
 function init(element) {

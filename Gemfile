@@ -58,7 +58,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem "tailwindcss-rails", "~> 0.4.3"
+gem 'tailwindcss-rails', '~> 0.4.3'
 
 gem 'devise'
 gem "pundit"
@@ -75,6 +75,3 @@ gem 'wdm', '~> 0.1.1'
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
-
-
-gem 'workflow', '~> 3.0'
