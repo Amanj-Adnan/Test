@@ -99,8 +99,8 @@ GEM
     faker (2.22.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
-    ffi (1.15.5-x64-mingw-ucrt)
     ffi (1.15.5-x64-mingw32)
+    ffi (1.15.5-x64-unknown)
     globalid (1.0.0)
       activesupport (>= 5.0)
     htmlentities (4.3.4)
@@ -237,7 +237,6 @@ GEM
       tzinfo (>= 1.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    wdm (0.1.1)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -261,8 +260,8 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
-  x64-mingw-ucrt
   x64-mingw32
+  x64-unknown
   x86_64-linux
 
 DEPENDENCIES
@@ -291,13 +290,12 @@ DEPENDENCIES
   tailwindcss-rails (~> 0.4.3)
   turbolinks (~> 5)
   tzinfo-data
-  wdm (~> 0.1.1)
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.0p-1
 
 BUNDLED WITH
    2.3.17

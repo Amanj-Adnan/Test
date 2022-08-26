@@ -4,19 +4,39 @@ class UserWorkflowsController < ApplicationController
 
     def new
         @users = User.all
+        @office = get_office
     end
      
     def create
+        @new_workflow= get_office.user_workflows.create!(get_params)
+        if @new_workflow.save
+            ActiveRecord::Base.transaction do
+                params[:user][:email].each do |e|
+                    @user = User.find_by(email:e)
+                    @user.update!(user_workflow_id:@new_workflow.id )
+                end
+
+            rescue ActiveRecord::RecordInvalid
+                puts "Oops. We tried to do an invalid operation!"
+            end
+        end
+        # @new_workflow= get_office.user_workflows.create!(get_params)
         puts(">>>>>>>>>>>>>>>>>>>>>>")
-        puts(params)
+        puts(params[:user][:email])
         puts("<<<<<<<<<<<<<<<<<<<<<<")
     end
 
 
     private
 
-    def self.search
-        
+    def get_office
+        Office.find(params[:office_id])
     end
-    
+
+    def get_params
+        params.require(:user).permit(:workflow_name , :workflow_manager)
+    end
+
+
+
 end

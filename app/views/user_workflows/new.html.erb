@@ -1,4 +1,5 @@
 <div class="flex justify-center w-auto">
+
   <% flash.each do |type, msg| %>
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
       <strong class="font-bold"><%=type %>!</strong>
@@ -8,7 +9,7 @@
   <% end %>
 </div>
 <% content_for :name do %>
-   Create Workflows
+  <p>Office : <%=@office.name %></p>
 <% end %>
 
 
@@ -17,7 +18,7 @@
         <div class="m-3">
 
         
-            <%= form_with model: @users ,url:admin_user_workflow_path , remote: true , html: {class:"mt-8  flex "} do |f| %>
+            <%= form_with model: @users ,url:admin_user_workflow_path(:office_id => @office.id) , remote: true , html: {class:"mt-8  flex "} do |f| %>
               <div class="flex flex-col  w-full justify-center items-center">
 
                 <div class="w-1/2">
@@ -26,8 +27,9 @@
                 </div>
 
                 <div class="w-1/2">
-                  <%= f.label :"Workflow Manger:"%><br />
-                  <%= f.text_field :workflow_manager, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+                  <%= f.label :"Workflow Manager Email:" %><br />
+                  <% options = options_from_collection_for_select(@users, 'id' , 'email' ) %>
+                  <%= f.select :workflow_manager,  options,{ include_blank: true } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
                 </div>
 
                 <div class="container">

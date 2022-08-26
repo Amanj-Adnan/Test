@@ -9,6 +9,7 @@
 
       </div>
     <% end %>
+
   </div>
 <% end %>
 
@@ -30,6 +31,12 @@
           <div class="w-1/2">
             <%= f.label :"Address:"%><br />
             <%= f.text_field :address, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+          </div>
+
+          <div class="w-1/2">
+            <%= f.label :"HR Email:" %><br />
+            <% options = options_from_collection_for_select(@hr_users, 'user_id', 'nmae' ) %>
+            <%= f.select :user_id,  options,{ include_blank: true } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
           </div>
 
 

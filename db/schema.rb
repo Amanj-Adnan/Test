@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_12_124331) do
+ActiveRecord::Schema.define(version: 2022_08_17_184622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,12 +122,13 @@ ActiveRecord::Schema.define(version: 2022_08_12_124331) do
     t.string "address"
     t.string "location"
     t.bigint "city_id", null: false
+    t.bigint "user_id"
     t.index ["city_id"], name: "index_offices_on_city_id"
+    t.index ["user_id"], name: "index_offices_on_user_id"
   end
 
   create_table "permissions", force: :cascade do |t|
     t.bigint "role_id", null: false
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_permissions_on_role_id"
@@ -182,6 +183,8 @@ ActiveRecord::Schema.define(version: 2022_08_12_124331) do
     t.string "workflow_manager"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "office_id"
+    t.index ["office_id"], name: "index_user_workflows_on_office_id"
   end
 
   create_table "users", force: :cascade do |t|

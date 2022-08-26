@@ -16,9 +16,15 @@ class User < ApplicationRecord
   has_one :hr_officer ,class_name: "LeaveRequest", foreign_key: "hr_officer_id", dependent: :destroy
   belongs_to :user_workflow, optional: true
 
+  has_one :office , foreign_key: "hr_officer_id"
+
+
 
 
   scope :without_user_profiles, -> { where('NOT EXISTS(SELECT 1 FROM user_profiles WHERE user_id = users.id)') }
+  # scope :hr_officers, ->{where('SELECT * FROM user_profiles WHERE position LIKE '%hr%' ')}
+
+
 
 
 end

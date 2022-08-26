@@ -12,8 +12,12 @@
     <div>
       <div class="sm:flex space-x-7 md:items-start items-center">
         <div class="mb-4">
-          <img class="rounded-md md:w-80" src="<%= url_for(@user.user_profile.avatar) %>" alt="<%= @user.user_profile.nmae %>" />
-        </div>
+          <%if @user.user_profile.avatar%>
+            <p>img</p>
+          <%else%>
+            <img class="rounded-md md:w-80" src="<%=url_for(@user.user_profile.avatar)%>" alt="<%= @user.user_profile.nmae %>" />
+          <%end%>
+            </div>
         <div>
           <h1 class="text-slate-100 text-4xl font-bold my-2"><%= @user.user_profile.nmae %></h1>
           <p class="text-slate-100 text-lg tracking-wide mb-6 md:max-w-lg">Full stack web developer and online instructor, specializiing in mostly JS, but also write Python, PHP and some other stuff.</p>
