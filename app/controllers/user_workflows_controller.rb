@@ -19,6 +19,11 @@ class UserWorkflowsController < ApplicationController
             rescue ActiveRecord::RecordInvalid
                 puts "Oops. We tried to do an invalid operation!"
             end
+            redirect_to admin_office_path(:city_id => get_office.city.id)
+
+        else
+            flash[:alert] = "tried to do an invalid operation"
+            redirect_to admin_office_path(:city_id => get_office.city.id)
         end
         # @new_workflow= get_office.user_workflows.create!(get_params)
         puts(">>>>>>>>>>>>>>>>>>>>>>")

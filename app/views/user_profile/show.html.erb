@@ -32,10 +32,12 @@
         <span class="text-slate-400 text-md">Location</span>
         <h2 class="text-slate-100 text-2xl font-semibold"><%= @user.user_profile.adress %></h2>
       </div>
+      <% if @user.user_workflow %>
       <div class="bg-slate-600 p-6 rounded-md mb-4">
         <span class="text-slate-400 text-md">Working location</span>
-        <h2 class="text-slate-100 text-2xl font-semibold"><%=@user.user_profile.working_country%>:<%=@user.user_profile.working_city%>:<%=@user.user_profile.working_office%></h2>
+        <h2 class="text-slate-100 text-2xl font-semibold"><%=@user.user_workflow.office.city.country.name%>:<%=@user.user_workflow.office.city.name%>:<%=@user.user_workflow.office.name%>:<%=@user.user_workflow.workflow_name%></h2>
       </div>
+        <%end %>
     </div>
     <div><p class="m-3 text-2xl font-bold">Leave Balance</p></div>
 
