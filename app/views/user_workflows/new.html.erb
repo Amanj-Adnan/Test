@@ -49,10 +49,12 @@
               </div>
             <% end %>
         </div>
+
+    <%= render partial: "user_workflows/user_workflows" , collection:  @user_workflows,  as: :workflow%>
     
     </div>
 
-  <%= render partial: "user_workflows/user_workflows"%>
+
 
  <script type="text/javascript" defer >
 

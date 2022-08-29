@@ -5,6 +5,7 @@ class UserWorkflowsController < ApplicationController
     def new
         @users = User.all
         @office = get_office
+        @user_workflows = UserWorkflow.all
     end
      
     def create
@@ -25,10 +26,6 @@ class UserWorkflowsController < ApplicationController
             flash[:alert] = "tried to do an invalid operation"
             redirect_to admin_office_path(:city_id => get_office.city.id)
         end
-        # @new_workflow= get_office.user_workflows.create!(get_params)
-        puts(">>>>>>>>>>>>>>>>>>>>>>")
-        puts(params[:user][:email])
-        puts("<<<<<<<<<<<<<<<<<<<<<<")
     end
 
 
