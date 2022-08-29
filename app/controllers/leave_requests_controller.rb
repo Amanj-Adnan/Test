@@ -10,7 +10,7 @@ class LeaveRequestsController < ApplicationController
   end
 
   def create
-    @new_application= current_user.leave_requests.create!(application_params.merge(:pre_approve=>'accepted' , :approve=>'pending'))
+    @new_application= current_user.leave_requests.create!(application_params.merge( :approve=>'pending'))
 
     if @new_application.save
       redirect_to user_profile_path(current_user)
