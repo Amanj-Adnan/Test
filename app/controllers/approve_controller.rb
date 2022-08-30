@@ -105,11 +105,6 @@ class ApproveController < ApplicationController
     else
     
     end
-
-    # puts(">>>>>>>>>>>>>>>>>>")
-    # puts(@leave.map)
-    # puts("<<<<<<<<<<<<<<<<<<")
-
   end
 
 
@@ -124,33 +119,3 @@ class ApproveController < ApplicationController
     @leave= LeaveRequest.find(params[:id])
   end
 end
-
-
-
-
-
-# @date1=params[:leave_request][:leave_start_date].to_date
-# @date2=params[:leave_request][:leave_end_date].to_date
-# @time1=params[:leave_request][:leave_start_date].to_time
-# @time2=params[:leave_request][:leave_end_date].to_time
-# @application_type = params[:leave_request][:leave_type]
-# @num_of_days=(@date2-@date1).to_i + 1
-# @num_of_hours=((@time2 - @time1) / 1.hours).to_i
-#
-# if @application_type  =="annual_leave"
-#   if @num_of_days == 1 && @num_of_hours <= 4
-#     flash[:alert] = "please change application type to hourly leave ."
-#   else
-#
-#   end
-# elsif @application_type  =="sick_leave"
-# elsif @application_type  =="maternity_leave"
-# elsif @application_type  =="marriage_leave"
-# elsif @application_type  =="paternity_leave"
-# elsif @application_type  =="bereavement_leave"
-# elsif @application_type  =="compensatory_off_leave"
-# elsif @application_type  =="loss_of_pay_leave"
-# elsif @application_type  =="hourly_leave"
-# else
-#
-# end

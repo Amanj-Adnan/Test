@@ -12,10 +12,10 @@
     <div>
       <div class="sm:flex space-x-7 md:items-start items-center">
         <div class="mb-4">
-          <%if @user.user_profile.avatar%>
-            <p>img</p>
-          <%else%>
+          <%if @user.user_profile.avatar.attached?%>
             <img class="rounded-md md:w-80" src="<%=url_for(@user.user_profile.avatar)%>" alt="<%= @user.user_profile.nmae %>" />
+          <%else%>
+            <p>img</p>
           <%end%>
             </div>
         <div>

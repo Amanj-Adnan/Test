@@ -73,6 +73,7 @@ gem 'roo', '~> 2.9'
 gem 'caxlsx'
 gem 'caxlsx_rails'
 gem 'rubyzip', '~> 2.3', '>= 2.3.2'
+gem 'state_machines', '~> 0.5.0'
 
 
 gem 'net-smtp'
