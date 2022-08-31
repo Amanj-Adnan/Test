@@ -7,7 +7,7 @@ class ApproveController < ApplicationController
   end
 
   def approve
-
+    # authorize @leave
     @application_type = @leave.leave_type
     @date1 = @leave.leave_start_date.to_date
     @date2 = @leave.leave_end_date.to_date
@@ -115,7 +115,7 @@ class ApproveController < ApplicationController
 
   private
 
-  def set_application
+    def set_application
     @leave= LeaveRequest.find(params[:id])
-  end
+    end
 end

@@ -1,0 +1,2 @@
+module LineManagerApprovalHelper
+end
