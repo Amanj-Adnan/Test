@@ -15,6 +15,7 @@ class UserProfileController < ApplicationController
   def new
     @user_email = User.without_user_profiles
     @user_profile=UserProfile.new
+    @countries = Country.all
   end
   def show
     @user=current_user

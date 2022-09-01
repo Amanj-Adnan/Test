@@ -62,8 +62,8 @@ Rails.application.routes.draw do
   get 'user/leaves' , to: 'leave#index'
   get 'user/leave_application' , to: 'leave_requests#new'
   post 'user/leave_application' , to: 'leave_requests#create'
-  put 'user/leave_application'   , to:"line_manager_approval#approve"
-
+  # put 'user/leave_application'   , to:"line_manager_approval#approve"
+  get 'user/recevied_leave_application'   , to:"line_manager_approval#index"
 
 
 

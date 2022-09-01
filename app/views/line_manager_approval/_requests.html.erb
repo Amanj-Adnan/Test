@@ -1,0 +1,75 @@
+<tbody class="bg-white divide-y divide-gray-300">
+<tr class="whitespace-nowrap">
+  <td class="px-6 py-4">
+    <div class="text-sm text-gray-900">
+      <%=request.user_id %>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class="text-sm text-gray-500"> <%=request.user.user_profile.nmae%></div>
+  </td>
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=request.application_date %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=request.leave_start_date %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=request.leave_end_date %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%=request.leave_type %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <div> nill </div>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if request.approve.nil? %>
+      <%= "" %>
+    <%else %>
+      <%=request.approve %>
+    <%end %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if request.reason.nil? %>
+      <%= "" %>
+    <%else %>
+      <%=request.reason %>
+    <%end %>
+  </td>
+
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <%if request.certificate.nil? %>
+      <%= "" %>
+    <%else %>
+      <%=request.certificate%>
+    <%end %>
+  </td>
+
+  <td class="flex px-6 py-4">
+
+    <%= form_with  model: request,  url: admin_leave_applications_approve_path(id:request.id), method: :patch, html: { class: "mx-2" } do |f| %>
+      <%= f.submit "Approve" , class:"px-4 py-1 text-sm text-green-400 bg-green-200 rounded-full" %>
+    <% end %>
+
+
+    <%= form_for request,  url: admin_leave_applications_reject_path(request), method: :patch, html: { class: "mx-2" } do |f| %>
+      <%= f.submit "Reject" , class:"px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full" %>
+    <% end %>
+
+  </td>
+</tr>
+
+</tbody>
