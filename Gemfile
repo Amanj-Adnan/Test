@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.0'
+ruby '3.1.2'
 
 #ruby '3.2.0' linux
 # ruby '3.1.2' windows
@@ -74,7 +74,9 @@ gem 'caxlsx'
 gem 'caxlsx_rails'
 gem 'rubyzip', '~> 2.3', '>= 2.3.2'
 gem 'aasm', '~> 5.3'
-
+gem 'city-state'
+gem 'hotwire-rails', '~> 0.1.3'
+gem 'importmap-rails'
 
 gem 'net-smtp'
 gem 'net-imap'

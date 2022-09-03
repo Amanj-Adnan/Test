@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: amanj
+  username: postgres
   password: 1999
 
 #  username: postgres
