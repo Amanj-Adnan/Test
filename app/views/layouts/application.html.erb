@@ -10,10 +10,12 @@
     <%= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body class="bg-gray-100" >

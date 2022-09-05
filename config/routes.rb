@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'items_imports/new'
   get 'items_imports/create'
   devise_for :users, :controllers => { :registrations => 'users/registrations'}
-  
+
   # devise_scope :user do
   #   post 'users/sign_up', to: 'devise/registrations#create'
   #  end
@@ -72,7 +72,7 @@ Rails.application.routes.draw do
   patch 'admin/leave_applications/approve' , to:"approve#approve"
   patch 'admin/leave_applications/reject' , to:"approve#reject"
 
- 
+
 
   get 'admin/user_workflow' , to:"user_workflows#new"
   post 'admin/user_workflow' , to:"user_workflows#create"
@@ -91,5 +91,4 @@ Rails.application.routes.draw do
   get 'admin/office', to:"offices#new"
   post 'admin/office', to:"offices#create"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
 end

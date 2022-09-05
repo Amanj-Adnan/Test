@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Untitled2</title>
+  <title>HR System</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
@@ -9,9 +9,11 @@
   <%= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <%= javascript_importmap_tags %>
+  <%= javascript_include_tag "application" %>
 </head>
 
 <body class="bg-gray-100">
