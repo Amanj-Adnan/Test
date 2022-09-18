@@ -1,7 +1,7 @@
 class UserProfileController < ApplicationController
   # before_action :set_user ,only: [:show,:show_attendance]
   before_action :authorized_admin ,only: [:new,:create]
-  before_action :authenticate_user! ,only: [:show,]
+  # before_action :authenticate_user! ,only: [:show,]
   layout :choose_layout
 
   def choose_layout
@@ -20,6 +20,22 @@ class UserProfileController < ApplicationController
   def show
     @user=current_user
     render "user_profile/show"
+  end
+
+  def cites
+    @target = params[:target]
+    @cities = Country.find(params[:country]).cities
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
+  def offices
+    # @target = params[:target]
+    # @cities = Country.find(params[:country]).cities
+    # respond_to do |format|
+    #   format.turbo_stream
+    # end
   end
 
 
@@ -56,7 +72,15 @@ class UserProfileController < ApplicationController
 
   def user_info_params
     params.require(:user_profile).permit(:user_id,:avatar,:adress,:nmae,:date_of_berth,:start_date,:end_of_contarct,
-                                         :monthly_salary,:educational_degree,:position,:working_country,:working_city,:working_office,:line_manager,:gender)
+                                         :monthly_salary,:educational_degree,:position,:working_country,:working_city,:gender)
+  end
+
+  def set_country_cites
+    if params[:country] == nil
+      City.all
+    else
+      puts(params[:country])
+    end
   end
 
   # def set_user

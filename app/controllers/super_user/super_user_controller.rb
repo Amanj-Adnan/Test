@@ -31,7 +31,6 @@ class  SuperUser::SuperUserController < ApplicationController
   def destroy
 
     if (user_signed_in?)
-      sign_out(current_user)
       session[:admin_id]=nil
       redirect_to root_path
     else

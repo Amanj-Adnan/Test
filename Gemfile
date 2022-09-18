@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.0'
+ruby '3.0.0'
 
 #ruby '3.2.0' linux
 # ruby '3.1.2' windows
@@ -78,6 +78,7 @@ gem 'city-state'
 gem 'hotwire-rails', '~> 0.1.3'
 gem 'importmap-rails'
 gem "sprockets-rails"
+gem 'rack-cors'
 
 gem 'net-smtp'
 gem 'net-imap'

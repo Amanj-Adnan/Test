@@ -53,7 +53,14 @@ Rails.application.routes.draw do
 
   resources :items_imports ,only: [:index, :new, :create] , path: '/admin/items'
 
-  resources :user_profile ,only: [:show,:create,:new] , path: '/user_profile'
+  # resources :user_profile ,only: [:show,:create,:new] , path: '/user_profile'
+
+  get '/user_profile/new' , to: 'user_profile#new'
+  get '/user_profile/show' , to: 'user_profile#show'
+  post '/user_profile/create' , to: 'user_profile#create'
+
+  get '/user_profile_admin/cites' , to: 'user_profile#cites'
+
   get '/user_attendance/attendances' , to: 'user_attendance#show'
 
 

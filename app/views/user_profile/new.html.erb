@@ -16,17 +16,17 @@
 
 <% content_for :admin_content do %>
 
-  <div class="mt-12">
+  <div class="mt-12"  data-controller="user-profile">
 
     <div class="flex items-center justify-center  ">
       <div class=" w-5/6 space-y-8">
         <div>
-          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900" data-controller="user_profile">
+          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900" >
             Create User Profile
           </h2>
         </div>
 
-        <%= form_with model: @user_profile ,url:user_profile_index_path , html: {class:"mt-8  grid grid-cols-2 gap-4"} do |f| %>
+        <%= form_with model: @user_profile ,url:user_profile_create_path, html: {class:"mt-8  grid grid-cols-2 gap-4"} do |f| %>
           <div class="</div">
             <%= f.label :email %><br />
            <% options = options_from_collection_for_select(@user_email, 'id', 'email' ) %>
@@ -93,25 +93,32 @@
           <div class="field">
             <%= f.label :"Country" %><br />
             <% options = options_from_collection_for_select(@countries, 'id', 'name' ) %>
-            <%= f.select :working_country,  options,{ include_blank: true } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+            <%= f.select :working_country,  options,{ include_blank: true  } , data: {action: "change->user-profile#handleChange" , user_profile_target:"name"} , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
           </div>
 
           <div class="field">
-            <%= f.label :"City"%><br />
-            <%= f.text_field :working_city, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+            <%= f.label :"City" %><br />
+            <%# cities = options_from_collection_for_select(@cites, 'id', 'name' ) %>
+<!--            , data: {user_profile_target: "output"}-->
+            <%= f.select :working_city,{},{ include_blank: "Select City"  } , data: {user_profile_target: "output"} , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
           </div>
 
+<!--          <div class="field">-->
+<!--            <%#= f.label :"City"%><br />-->
+            <%#= f.text_field :working_city,id:"office_id", value:"country", data: {target: "user-profile.output"}  ,class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+<!--          </div>-->
 
-          <div class="field">
-            <%= f.label :"Office"%><br />
-            <%= f.text_field :working_office, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
-          </div>
+
+<!--          <div class="field">-->
+<!--            <%#= f.label :"Office"%><br />-->
+            <%#= f.text_field :working_office,id:"office_id", value:"", class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+<!--          </div>-->
 
 
-          <div class="field">
-            <%= f.label :"Line Manager"%><br />
-            <%= f.text_field :line_manager, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
-          </div>
+<!--          <div class="field">-->
+<!--            <%#= f.label :"Line Manager"%><br />-->
+            <%#= f.text_field :line_manager, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+<!--          </div>-->
 
           <div class="</div">
             <%= f.label :Gender %><br />

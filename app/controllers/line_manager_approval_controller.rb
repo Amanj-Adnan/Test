@@ -4,7 +4,12 @@ class LineManagerApprovalController < ApplicationController
   def index
     @requests=LeaveRequest.all
     @leave = LeaveRequest.first
-    authorize @leave
+    if @leave == nil
+      redirect_back fallback_location: user_profile_show_path
+    else
+      authorize @leave
+    end
+
   end
   def approve
 
