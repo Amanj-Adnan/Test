@@ -24,5 +24,5 @@ application.register('toggle', Toggle)
 application.register('slideover', Slideover)
 
 import StimulusSlimselect from "./stimulus_slimselect_controller"
-application.register('slim-select', StimulusSlimselect)
+application.register('select2', StimulusSlimselect)
 

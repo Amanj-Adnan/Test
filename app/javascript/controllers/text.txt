@@ -393,3 +393,10 @@ export default class extends Controller {
 
     }
 }
+<!--                  <select  data-controller="select2" data-stimulus-slimselect-options-value = "<%#={ hideSelectedOption: true, showSearch: false, class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json%> " multiple>-->
+                    <%# if !@users.blank? %>
+                      <%# @users.each { |user| %>
+<!--                    <option value="<%#= user.id %>"><%#= user.email  %></option>-->
+                    <%#  } %>
+                    <%# end %>
+<!--                  </select>-->

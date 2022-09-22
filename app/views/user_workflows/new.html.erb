@@ -34,13 +34,11 @@
 
                 <div class="container">
                   <%= f.label :"Employees:"%><br />
-                  <select  data-controller="slim-select" data-stimulus-slimselect-options-value = "<%={ hideSelectedOption: true, showSearch: false, class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json%> " multiple>
-                    <% if !@users.blank? %>
-                      <% for user in @users %>
-                        <option value="<%=user.email %>" ><%=user.email %></option>
-                      <% end %>
-                    <% end %>
-                  </select>
+                  <%= f.select :employees, options_from_collection_for_select(@users, 'id' , 'email'),{ include_blank: true } ,
+                               data:{controller:"select2" , select2_options_value:{hideSelectedOption: true, showSearch: true , class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json},
+                                 multiple:'multiple'
+                  %>
+
                 </div>
 
                    <div class="m-3">
