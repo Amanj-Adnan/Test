@@ -9,12 +9,48 @@
   <% end %>
 </div>
 <% content_for :name do %>
-  Edit Workflow
+  Edit Workflow : <%=@workflow.workflow_name %>
 <% end %>
 
 
 <% content_for :admin_content do %>
+  <div class="m-3">
 
+
+    <%= form_with model: @users ,url:admin_user_workflow_path(:office_id => @office.id) , remote: true , html: {class:"mt-8  flex "} do |f| %>
+      <div class="flex flex-col  w-full justify-center items-center">
+
+        <div class="w-1/2">
+          <%= f.label :"Workflow Name:"%><br />
+          <%= f.text_field :workflow_name,
+            class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
+           value:@workflow.workflow_name
+          %>
+        </div>
+
+        <div class="w-1/2">
+          <%= f.label :"Workflow Manager Email:" %><br />
+          <% options = options_from_collection_for_select(@users, 'id' , 'email' ) %>
+          <%= f.select :workflow_manager,  options,{ include_blank: true } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+        </div>
+
+        <div class="container">
+          <%= f.label :"Employees:"%><br />
+          <%= f.select :employees, options_from_collection_for_select(@users, 'id' , 'email'),{ include_blank: true } ,
+                       data:{controller:"select2" , select2_options_value:{hideSelectedOption: true, showSearch: true , class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json},
+                       multiple:'multiple',
+                       value:@workflow.id
+          %>
+
+        </div>
+
+        <div class="m-3">
+          <%= f.submit "Create Profile" ,class:"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 

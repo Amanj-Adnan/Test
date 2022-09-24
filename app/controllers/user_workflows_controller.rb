@@ -1,5 +1,6 @@
 class UserWorkflowsController < ApplicationController
     before_action :authorized_admin
+    before_action :set_workflow_prams, only: [:edit,:update]
     layout('admin' )
 
     def new
@@ -39,7 +40,8 @@ class UserWorkflowsController < ApplicationController
     end
 
     def edit
-
+        @users = User.all
+        @office = Office.first
     end
 
     def update
@@ -55,6 +57,10 @@ class UserWorkflowsController < ApplicationController
 
     def get_params
         params.require(:user).permit(:workflow_name , :workflow_manager)
+    end
+
+    def set_workflow_prams
+        @workflow = UserWorkflow.find_by(id: params[:workflow_id])
     end
 
 
