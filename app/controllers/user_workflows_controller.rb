@@ -41,11 +41,20 @@ class UserWorkflowsController < ApplicationController
 
     def edit
         @users = User.all
+        @current_users = @workflow.users.ids.to_a
+        @line_manager=User.find_by(id:@workflow.workflow_manager).id
         @office = Office.first
     end
 
     def update
 
+        if @workflow.update(get_params)
+
+            redirect_to root_path
+
+        else
+            render :edit
+        end
     end
 
 

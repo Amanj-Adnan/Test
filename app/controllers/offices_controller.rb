@@ -12,13 +12,10 @@ class OfficesController < ApplicationController
     @country = get_city.country
     @city = get_city
     @offices = get_city.offices
-    @hr_users = UserProfile.where("position LIKE ?", "%HR%").all
+    @hr_users = UserProfile.where("position LIKE ?", "%Hr%").all
   end
 
   def create
-    puts('>>>>>>>>>>>>>>>>>>>>>>>>')
-    puts(get_params)
-    puts('<<<<<<<<<<<<<<<<<<<<<<<<')
     @office = get_city.offices.create(get_params)
     if @office.save
       redirect_to admin_office_path(:city => get_city.id )

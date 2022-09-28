@@ -30,16 +30,15 @@
 
         <div class="w-1/2">
           <%= f.label :"Workflow Manager Email:" %><br />
-          <% options = options_from_collection_for_select(@users, 'id' , 'email' ) %>
+          <% options = options_from_collection_for_select(@users, 'id' , 'email' ,@line_manager) %>
           <%= f.select :workflow_manager,  options,{ include_blank: true } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
         </div>
 
         <div class="container">
           <%= f.label :"Employees:"%><br />
-          <%= f.select :employees, options_from_collection_for_select(@users, 'id' , 'email'),{ include_blank: true } ,
+          <%= f.select :employees, options_from_collection_for_select(@users, 'id' , 'email',@current_users),{ include_blank: true } ,
                        data:{controller:"select2" , select2_options_value:{hideSelectedOption: true, showSearch: true , class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json},
-                       multiple:'multiple',
-                       value:@workflow.id
+                       multiple:'multiple'
           %>
 
         </div>
