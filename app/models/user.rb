@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_one :hr_officer ,class_name: "LeaveRequest", foreign_key: "hr_officer_id", dependent: :destroy
   belongs_to :user_workflow, optional: true
 
-  has_one :office , foreign_key: "hr_officer_id"
+  has_one :office , foreign_key: "user_id"
 
 
 

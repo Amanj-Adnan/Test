@@ -10,10 +10,13 @@ class LeaveRequestsController < ApplicationController
   end
 
   def create
-    @new_application= current_user.leave_requests.create!(application_params.merge( :approve=>'pending'))
+    @date = DateTime.now
+    @line_manger = current_user.user_workflow.workflow_manager
+    @hr = current_user.user_workflow.office.user_id
+    @new_application= current_user.leave_requests.create!(application_params.merge( :approve=>'pending',:line_manager_id=>@line_manger,:hr_officer_id=>@hr ,:application_date=>@date))
 
     if @new_application.save
-      redirect_to user_profile_path(current_user)
+      redirect_to user_profile_show_path(current_user)
     else
       flash[:alert] = "Please fill all of inputs"
       redirect_back fallback_location:user_leave_application_path
@@ -26,7 +29,7 @@ class LeaveRequestsController < ApplicationController
 
 
   def application_params
-    params.require(:leave_request).permit(:line_manager_id,:hr_officer_id,:application_date,:leave_start_date,:leave_end_date,:leave_type,:reason,:certificate)
+    params.require(:leave_request).permit(:leave_start_date,:leave_end_date,:leave_type,:reason,:certificate)
   end
 end
 

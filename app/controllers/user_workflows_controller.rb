@@ -20,7 +20,6 @@ class UserWorkflowsController < ApplicationController
             ActiveRecord::Base.transaction do
                 params[:user][:employees].each do |id|
                     if id != ''
-                        puts(id)
                     @user = User.find_by(id:id)
                     @user.update!(user_workflow_id:@new_workflow.id )
                     @user_profile = UserProfile.find_by(user_id:id)
@@ -47,10 +46,24 @@ class UserWorkflowsController < ApplicationController
     end
 
     def update
-
+        @office = Office.find_by(id:@workflow.office_id)
+        puts(@office)
         if @workflow.update(get_params)
 
-            redirect_to root_path
+            ActiveRecord::Base.transaction do
+                params[:user][:employees].each do |id|
+                    if id != ''
+                        @user = User.find_by(id:id)
+                        @user.update!(user_workflow_id:@workflow.id )
+                        @user_profile = UserProfile.find_by(user_id:id)
+                        @user_profile.update!(line_manager: params[:user][:workflow_manager] )
+                    end
+                end
+
+            rescue ActiveRecord::RecordInvalid
+                puts "Oops. We tried to do an invalid operation!"
+            end
+            redirect_to admin_user_workflow_path(:office_id => @office.city.id)
 
         else
             render :edit

@@ -29,23 +29,8 @@
           </h2>
         </div>
 
-        <%= form_with model: @leave_request ,url:user_leave_application_path , html: {class:"mt-8  grid grid-cols-2 gap-4"} do |f| %>
+        <%= form_with model: @leave_request ,url:user_leave_application_path , html: {class:"mt-8  grid grid-cols-1 gap-4"} do |f| %>
 
-          <div class="field">
-            <%= f.label :"Line Manager" %><br />
-            <%= f.text_field :line_manager_id, value: 1 , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
-          </div>
-
-          <div class="field">
-            <%= f.label :"HR" %><br />
-            <%= f.text_field :hr_officer_id, value: 2 , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
-          </div>
-
-
-          <div class="field">
-            <%= f.label :"Application Date" %><br />
-            <%= f.date_field :application_date, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
-          </div>
 
           <div class="">
             <p class="font-bold mb-2"> Leave duration</p>
@@ -86,7 +71,7 @@
 
 
           <div class="w-1/2">
-            <%= f.submit "Create Profile" ,class:"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
+            <%= f.submit "Send Request" ,class:"group relative w-full flex justify-center py-2 mt-8 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
           </div>
         <% end %>
 

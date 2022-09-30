@@ -84,6 +84,7 @@ Rails.application.routes.draw do
   get 'admin/user_workflow' , to:"user_workflows#new"
   post 'admin/user_workflow' , to:"user_workflows#create"
   get 'admin/edit_user_workflow' , to:"user_workflows#edit"
+  put 'admin/edit_user_workflow' , to:"user_workflows#update"
 
 
 
