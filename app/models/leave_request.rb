@@ -9,7 +9,7 @@ class LeaveRequest < ApplicationRecord
 
 
 
-  aasm column: 'approve' do
+  aasm :move, column: 'approve' do
     state :pending, initial: true
     state :pre_approved, :approved , :rejected
   #
@@ -18,7 +18,7 @@ class LeaveRequest < ApplicationRecord
     end
   #
     event :final_approve do
-      transitions from: [:pre_approve], to: :approved
+      transitions from: [:pre_approved], to: :approved
     end
   #
     event :reject do

@@ -8,6 +8,7 @@ class ApproveController < ApplicationController
 
   def approve
     # authorize @leave
+
     @application_type = @leave.leave_type
     @date1 = @leave.leave_start_date.to_date
     @date2 = @leave.leave_end_date.to_date
@@ -17,7 +18,7 @@ class ApproveController < ApplicationController
     @num_of_hours=((@time2 - @time1) / 1.hours).to_i
 
     if @application_type  == "annual_leave"
-    
+
       @new_balance = @leave.user.leave.annual_leave.to_i - @num_of_days
       if @leave.update_attribute(:approve,"accepted") && @leave.user.leave.update_attribute(:annual_leave,@new_balance)
         flash[:alert] = "Leave application approved"
@@ -71,13 +72,13 @@ class ApproveController < ApplicationController
         flash[:alert] = "Something went Wrong"
         redirect_back fallback_location:admin_leave_applications_path
       end
-    
-    
+
+
     elsif @application_type  =="compensatory_off_leave"
     elsif @application_type  =="loss_of_pay_leave"
-    
-    
-    
+
+
+
     elsif @application_type  =="hourly_leave"
       if @leave.user.leave.hourly_leave < @num_of_hours
         @hours= 8
@@ -103,7 +104,7 @@ class ApproveController < ApplicationController
         end
       end
     else
-    
+
     end
   end
 

@@ -12,11 +12,13 @@ class User < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_one :leave, dependent: :destroy
   has_many :leave_requests, dependent: :destroy
-  has_one :line_manager ,class_name: "LeaveRequest", foreign_key: "line_manager_id", dependent: :destroy
-  has_one :hr_officer ,class_name: "LeaveRequest", foreign_key: "hr_officer_id", dependent: :destroy
+  # has_one :line_manager ,class_name: "LeaveRequest", foreign_key: "line_manager_id", dependent: :destroy
+  # has_one :hr_officer ,class_name: "LeaveRequest", foreign_key: "hr_officer_id", dependent: :destroy
   belongs_to :user_workflow, optional: true
 
   has_one :office , foreign_key: "user_id"
+
+  belongs_to :line_manager, class_name: 'UserWorkflow', foreign_key: 'line_manager_id'
 
 
 

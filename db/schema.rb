@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_03_191645) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_01_202658) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,10 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_03_191645) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", precision: nil, null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -196,7 +196,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_03_191645) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_workflow_id", default: 0, null: false
+    t.bigint "line_manager_id", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["line_manager_id"], name: "index_users_on_line_manager_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_workflow_id"], name: "index_users_on_user_workflow_id"
   end

@@ -26,3 +26,6 @@ application.register('slideover', Slideover)
 import StimulusSlimselect from "./stimulus_slimselect_controller"
 application.register('select2', StimulusSlimselect)
 
+import ModalController from "./modal_controller";
+application.register('modal2', ModalController)
+

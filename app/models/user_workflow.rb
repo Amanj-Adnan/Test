@@ -1,6 +1,7 @@
 class UserWorkflow < ApplicationRecord
     belongs_to :office
     has_many :users
+    has_one :line_manager, foreign_key: 'line_manager_id', class_name: 'User'
     # around_create :update_user_workflow
 
 

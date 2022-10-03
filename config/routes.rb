@@ -71,6 +71,8 @@ Rails.application.routes.draw do
   post 'user/leave_application' , to: 'leave_requests#create'
   # put 'user/leave_application'   , to:"line_manager_approval#approve"
   get 'user/recevied_leave_application'   , to:"line_manager_approval#index"
+  put 'user/recevied_leave_application'   , to:"line_manager_approval#approve"
+  put 'user/reject_recevied_leave_application'   , to:"line_manager_approval#reject"
 
 
 
