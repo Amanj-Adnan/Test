@@ -1,18 +1,7 @@
 <% content_for :name do %>
   <div class="flex justify-center w-auto">Leave Application</div>
 
-  <div class="flex justify-center w-auto">
-    <% flash.each do |type, msg| %>
-      <div class="bg-red-100 border text-md border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <strong class="font-bold"><%=type %>!</strong>
-        <span class="block sm:inline"><%=msg %></span>
-
-      </div>
-    <% end %>
-  </div>
-
 <% end %>
-
 
 
 
@@ -29,7 +18,7 @@
           </h2>
         </div>
 
-        <%= form_with model: @leave_request ,url:user_leave_application_path , html: {class:"mt-8  grid grid-cols-1 gap-4"} do |f| %>
+        <%= form_with model: @leave_request ,url:user_leave_application_path, data: { turbo: false }, html: {class:"mt-8  grid grid-cols-1 gap-4"} do |f| %>
 
 
           <div class="">

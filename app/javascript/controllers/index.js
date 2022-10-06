@@ -29,3 +29,8 @@ application.register('select2', StimulusSlimselect)
 import ModalController from "./modal_controller";
 application.register('modal2', ModalController)
 
+import CostumeAlert from "./costume_alert_controller";
+application.register('alert2', CostumeAlert)
+
+
+
