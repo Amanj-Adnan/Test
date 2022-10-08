@@ -1,6 +1,7 @@
 class AttendanceController < ApplicationController
   before_action :authorized_admin
   layout('admin' )
+  include Dummy
   def index
     @attendance=Attendance.order(date: :desc).all
 
@@ -34,7 +35,8 @@ class AttendanceController < ApplicationController
   end
 
   def create
-    
+    hash = JSON.parse @dummy
+    puts(hash)
   end
 
 

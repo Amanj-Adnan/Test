@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_01_202658) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_07_122426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_01_202658) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "hr_officer_id"
+    t.text "reject_reason"
     t.index ["hr_officer_id"], name: "index_leave_requests_on_hr_officer_id"
     t.index ["line_manager_id"], name: "index_leave_requests_on_line_manager_id"
     t.index ["user_id"], name: "index_leave_requests_on_user_id"

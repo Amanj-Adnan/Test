@@ -70,46 +70,45 @@
 
 
     <% if policy(request).reject? %>
-      <%= button_to "Reject" , user_reject_recevied_leave_application_path(id:request.id),  method: :put, data: { turbolinks: false }, class:'px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full' %>
-    <% end %>
-    <%#= form_for request,  url: admin_leave_applications_reject_path(request), method: :patch, html: { class: "mx-2" } do |f| %>
-      <%#= f.submit "Reject" , class:"px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full" %>
-    <%# end %>
+      <div data-controller="modal2" data-modal2-allow-background-close="false">
+        <a href="#" data-action="click->modal2#open" class="px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full">
+          <span>Reject</span>
+        </a>
 
-<!--    <button data-controller="modal2" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">-->
-<!--      Toggle modal-->
-<!--    </button>-->
-
-    <div data-controller="modal2" data-modal2-allow-background-close="false">
-      <a href="#" data-action="click->modal2#open" class="px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full">
-        <span>Reject</span>
-      </a>
-
-      <!-- Modal Container -->
-      <div data-modal2-target="container" data-action="click->modal2#closeBackground keyup@window->modal2#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center  justify-center" style="z-index: 9999;">
-        <!-- Modal Inner Container -->
-        <div class="max-h-screen w-5/12 relative">
-          <!-- Modal Card -->
-          <div class="m-1 bg-white   rounded shadow ">
-            <div class="p-8">
-              <h2 class="text-xl mb-4">Reject reason</h2>
-              <%= form_with model: request ,url:user_profile_create_path, html: {class:"mt-2"} do |f| %>
-                <div class="</div">
-                  <%= f.label :"Reject Reason" %><br />
-                  <%= f.text_field :reject_reason,  class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
-                </div>
-
-
-              <div class="flex justify-end items-center flex-wrap mt-6">
-                <button class="ml-2 px-4 py-1 text-sm text-indigo-500 hover:bg-indigo-300 bg-indigo-200 rounded-ful" data-action="click->modal2#close">Close</button>
-                <%= f.submit "Send reject" ,class:"ml-2 px-4 py-1 text-sm text-red-500 hover:bg-red-300 bg-red-200 rounded-full"%>
+        <!-- Modal Container -->
+        <div data-modal2-target="container" data-action="click->modal2#closeBackground keyup@window->modal2#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center  justify-center" style="z-index: 9999;">
+          <!-- Modal Inner Container -->
+          <div class="max-h-screen w-5/12 relative">
+            <!-- Modal Card -->
+            <div class="m-1 bg-white   rounded shadow ">
+              <div class="p-8">
+                <h2 class="text-xl mb-4">Reject reason</h2>
+                <%= form_with model: request ,url:user_reject_recevied_leave_application_path(id:request.id), method: :put, data: { turbolinks: false },html: {class:"mt-2"} do |f| %>
+                  <div class="</div">
+                    <%= f.label :"Reject Reason" %><br />
+                    <%= f.text_area :reject_reason,  class:"appearance-none mt-1 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+                  </div>
+                  <div class="flex justify-end items-center flex-wrap mt-6">
+                    <div class="ml-2 px-4 py-1 text-sm text-indigo-500 hover:bg-indigo-300 bg-indigo-200 rounded-full" data-action="click->modal2#close">Close</div>
+                    <%= f.submit "Send reject" ,class:"ml-2 px-4 py-1 text-sm text-red-500 hover:bg-red-300 bg-red-200 rounded-full"%>
+                  </div>
+                <% end %>
               </div>
-              <% end %>
             </div>
           </div>
         </div>
       </div>
-    </div>
+   <% end %>
+    <%#= form_for request,  url: admin_leave_applications_reject_path(request), method: :patch, html: { class: "mx-2" } do |f| %>
+      <%#= f.submit "Reject" , class:"px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full" %>
+    <%# end %>
+    <%#= button_to "Reject" , user_reject_recevied_leave_application_path(id:request.id),  method: :put, data: { turbolinks: false }, class:'px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full' %>
+
+    <!--    <button data-controller="modal2" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="defaultModal">-->
+<!--      Toggle modal-->
+<!--    </button>-->
+
+
 
   </td>
 </tr>

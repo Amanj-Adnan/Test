@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   #   end
   # end
   get '/admin/attendance' , to: 'attendance#index'
+  post '/admin/attendance' , to: 'attendance#create'
 
   get '/admin/attendance/export' , to: 'attendance#export'
   get '/admin/attendance/import' , to: 'attendance#import'

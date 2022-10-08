@@ -1,5 +1,6 @@
 class LineManagerApprovalController < ApplicationController
   before_action :get_leave_request , only: [:approve ,:reject]
+  before_action :get_reject_reason, only: [:reject]
   layout('user' )
 
   def index
@@ -129,6 +130,7 @@ class LineManagerApprovalController < ApplicationController
     authorize @request
     if @request.may_reject?
       @state = @request.reject!
+      @request.update_attribute(:reject_reason , @reason)
       redirect_back fallback_location:user_leave_application_path
     end
   end
@@ -138,6 +140,10 @@ class LineManagerApprovalController < ApplicationController
 
   def get_leave_request
     @request =LeaveRequest.find(params[:id])
+  end
+
+  def get_reject_reason
+    @reason = params[:leave_request][:reject_reason]
   end
 
 end

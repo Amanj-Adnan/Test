@@ -80,6 +80,7 @@ gem 'importmap-rails'
 gem "sprockets-rails"
 gem 'rack-cors'
 
+
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
