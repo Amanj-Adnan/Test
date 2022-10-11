@@ -79,6 +79,8 @@ gem 'hotwire-rails', '~> 0.1.3'
 gem 'importmap-rails'
 gem "sprockets-rails"
 gem 'rack-cors'
+gem 'kaminari'
+gem 'pg_search'
 
 
 gem 'net-smtp'

@@ -3,7 +3,11 @@ class AttendanceController < ApplicationController
   layout('admin' )
   include Dummy
   def index
-    @attendance=Attendance.order(date: :desc).all
+    if params[:query] && params[:query] !=''
+      @attendance=Attendance.order(date: :desc).global_search(params[:query]).page(params[:page])
+    else
+      @attendance=Attendance.order(date: :desc).page(params[:page])
+    end
 
     #
     # respond_to do |format|
@@ -35,8 +39,17 @@ class AttendanceController < ApplicationController
   end
 
   def create
-    hash = JSON.parse @dummy
-    puts(hash)
+    get_data["parameters"].each_with_index do |attendance,index|
+      @user_id = get_data["parameters"][index]["user_id"]
+      @date = get_data["parameters"][index]["date"]
+      @clock_in = get_data["parameters"][index]["clock_in"]
+      @clock_out = get_data["parameters"][index]["clock_out"]
+      if check_date(@user_id,@date)
+        next
+      end
+      Attendance.create(user_id:@user_id , date:@date ,clock_in:@clock_in ,clock_out:@clock_out )
+    end
+    redirect_to admin_attendance_path
   end
 
 
@@ -51,6 +64,18 @@ class AttendanceController < ApplicationController
 
     respond_to do |format|
       format.csv{send_data @attendance.to_csv}
+    end
+  end
+
+  private
+
+  def check_date(user_id , date)
+    @attendances = Attendance.find_by_sql "SELECT id FROM attendances WHERE date = '#{date}' AND user_id = '#{user_id}' "
+
+    if  @attendances.length == 1
+      return true
+    else
+      return false
     end
   end
   

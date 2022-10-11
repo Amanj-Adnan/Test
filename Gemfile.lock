@@ -126,6 +126,18 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -161,6 +173,9 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.3)
+    pg_search (2.3.6)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     public_suffix (5.0.0)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -290,11 +305,13 @@ DEPENDENCIES
   importmap-rails
   jbuilder (~> 2.7)
   jsbundling-rails
+  kaminari
   listen (~> 3.3)
   net-imap
   net-pop
   net-smtp
   pg (~> 1.4, >= 1.4.1)
+  pg_search
   puma (~> 5.0)
   pundit
   rack-cors

@@ -32,5 +32,8 @@ application.register('modal2', ModalController)
 import CostumeAlert from "./costume_alert_controller";
 application.register('alert2', CostumeAlert)
 
+import SearchController from "./search_controller";
+application.register('search', SearchController)
+
 
 

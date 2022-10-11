@@ -6,3 +6,4 @@ pin "@rails/request.js", to: "https://ga.jspm.io/npm:@rails/request.js@0.0.6/src
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "tailwindcss-stimulus-components", to: "https://ga.jspm.io/npm:tailwindcss-stimulus-components@3.0.4/dist/tailwindcss-stimulus-components.modern.js"
 pin "slim-select", to: "https://ga.jspm.io/npm:slim-select@1.27.1/dist/slimselect.min.mjs"
+pin "debounce", to: "https://ga.jspm.io/npm:debounce@1.2.1/index.js"

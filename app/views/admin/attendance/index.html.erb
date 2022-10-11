@@ -1,7 +1,7 @@
 <% content_for :name do %>
-  <%= link_to "Load Data " , admin_attendance_path ,  method: :post, 'data-turbo': false %>
+  <%= link_to "Load Data " ,admin_attendance_load_data_path ,data:{turbo_method: :post } %>
 
-  <div class="flex justify-between">
+  <div class="flex mt-3 justify-between">
   <%=
     link_to 'Download as Excel',
             admin_attendance_path(format: :xlsx)
@@ -13,16 +13,23 @@
 <% end %>
 </div>
 
+
 <% content_for :admin_content do %>
 <div class="overflow-auto">
 
-  <div class="container  mt-10 justify-center mx-auto">
+  <div class="mt-10 justify-center mx-auto">
+
+    <%= form_with(url: admin_attendance_path, method: :get, data: {turbo_frame: "search_results" ,turbo_action: "advance", controller:"search" , action:"input->search#submit"}) do |f| %>
+      <%= label_tag(:query, "Search for") %>
+      <%= text_field_tag :query, params[:query], data: {target: "search.query"} %>
+      <%= submit_tag("Search", class: "btn btn-primary") %>
+    <% end %>
 
 
-
-        <div class=" border-b border-gray-200 shadow ">
+    <%= turbo_frame_tag "search_results" do %>
+    <div class="  ">
           <table class="divide-y  divide-gray-300 ">
-            <thead class="bg-gray-50">
+            <thead class="bg-white">
             <tr>
               <th class="px-6 py-2  text-gray-700">
                 ID
@@ -60,20 +67,29 @@
               </th>
 
               <th class="px-6 py-2 text-gray-700">
-                Action addddddddddddddddddddddddddddddddddddddddddddddd
+                Action
               </th>
 
 
             </tr>
             </thead>
 
-            <%= render partial: "admin/attendance/attendances", collection: @attendance %>
+            <tbody  class="bg-white divide-y divide-gray-300">
+
+              <%= render partial: "admin/attendance/attendances", collection: @attendance %>
+
+            </tbody>
+
 
           </table>
+         <div class="mt-2">
+           <%= paginate @attendance %>
+         </div>
         </div>
 
 
   </div>
+    <% end %>
 
 </div>
 <% end %>
