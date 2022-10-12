@@ -35,5 +35,8 @@ application.register('alert2', CostumeAlert)
 import SearchController from "./search_controller";
 application.register('search', SearchController)
 
+import ExportCvsController from "./export_cvs_controller";
+application.register('csv', ExportCvsController)
+
 
 

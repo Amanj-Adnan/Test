@@ -27,13 +27,58 @@
       </div>
     <% end %>
 
-
-
     <%= turbo_frame_tag "search_results" do %>
     <div class="  ">
-          <table class="divide-y  divide-gray-300 ">
+      <div class="my-4" data-controller="modal2" data-modal2-allow-background-close="false">
+        <a href="#" data-action="click->modal2#open" class="mb-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+          <span>Export CSV</span>
+        </a>
+
+        <!-- Modal Container -->
+        <div data-modal2-target="container" data-action="click->modal2#closeBackground keyup@window->modal2#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center  justify-center" style="z-index: 9999;">
+          <!-- Modal Inner Container -->
+          <div class="max-h-screen w-5/12 relative">
+            <!-- Modal Card -->
+            <div class="m-1 bg-white   rounded shadow ">
+              <div class="p-8">
+                <h2 class="text-2xl font-bold mb-4">Exporting details</h2>
+                <div class="text-sm">
+                  <div class="flex ">
+                    <div class="py-1 text-lg  font-bold ">Export File As view :</div>
+                    <button class="ml-2  bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-full" data-controller="csv" data-action="click->csv#htmlToCSV" data-target="csv.html">
+                      Button
+                    </button>
+                  </div>
+                  <div class="flex-col mt-4">
+                    <div class="py-1 mt-2 text-lg font-bold ">Export All Filtered Rows :</div>
+                    <div class="flex-col">
+                     <div class="my-3 flex">
+                       <div class="py-2 mx-3 ">From :</div>
+                       <input  class=" border-2 w-auto border-gray-400 bg-white  px-5  rounded-lg text-sm" type="date">
+                       <div class="py-2 mx-3 ">To :</div>
+                       <input class=" border-2 w-auto border-gray-400 bg-white px-5 rounded-lg text-sm" type="date"></div>
+                      <div class="my-3 flex">
+                        <div class="py-2 mx-3 ">User_id :</div>
+                        <input class=" border-2 w-auto border-gray-400 bg-white px-5 rounded-lg text-sm" type="number" min="0">
+                      </div>
+                    </div>
+                    <button class="  ml-2  bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-full" data-controller="csv" data-action="click->csv#htmlToCSV" data-target="csv.html">
+                      Button
+                    </button>
+                  </div>
+                  <div class="flex justify-end items-center flex-wrap mt-6">
+                    <div class="ml-2 px-4 py-1 text-sm text-red-500 hover:bg-red-300 bg-red-200 rounded-full" data-action="click->modal2#close">Close</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table id="attendance_table" class="divide-y  divide-gray-300 ">
             <thead class="bg-white">
-            <tr>
+            <tr  id="attendance_table_row">
               <th class="px-6 py-2  text-gray-700">
                 ID
               </th>
