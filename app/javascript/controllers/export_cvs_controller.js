@@ -4,15 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
     static targets = ["html"]
 
-    connect() {
-        console.log('amanj')
-    }
-
-
     htmlToCSV(html, filename) {
-        console.log(document.querySelector("table tr").innerText)
-        // console.log(document.getElementById("attendance_table").innerText)
-
         var data = [];
         var rows = document.getElementById("attendance_table");
         for (var i = 0; i < rows.rows.length; i++) {

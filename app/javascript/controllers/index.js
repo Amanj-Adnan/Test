@@ -38,5 +38,8 @@ application.register('search', SearchController)
 import ExportCvsController from "./export_cvs_controller";
 application.register('csv', ExportCvsController)
 
+import DatatablesController from "./datatables_controller";
+application.register('datatable', DatatablesController)
+
 
 

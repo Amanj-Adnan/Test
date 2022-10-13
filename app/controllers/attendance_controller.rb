@@ -4,9 +4,17 @@ class AttendanceController < ApplicationController
   include Dummy
   def index
     if params[:query] && params[:query] !=''
-      @attendance=Attendance.order(date: :desc).global_search(params[:query]).page(params[:page])
+      @per = 10
+      if  params[:per_page] && params[:per_page] !=''
+        @per = params[:per_page].to_i
+      end
+      @attendance=Attendance.order(date: :desc).global_search(params[:query]).page(params[:page]).per(@per)
     else
-      @attendance=Attendance.order(date: :desc).page(params[:page])
+      @per = 10
+      if  params[:per_page] && params[:per_page] !=''
+        @per = params[:per_page].to_i
+      end
+      @attendance=Attendance.order(date: :desc).page(params[:page]).per(@per)
     end
 
     #
