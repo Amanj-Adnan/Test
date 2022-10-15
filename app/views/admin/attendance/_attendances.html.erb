@@ -5,45 +5,45 @@
       <%=attendances.user_id %>
     </div>
   </td>
-  <td class="px-6 py-4">
+  <td class="px-6 py-4 email">
     <div class="text-sm text-gray-500"> <%=attendances.user.email%></div>
   </td>
-  <td class="px-6 py-4 text-sm text-gray-500">
+  <td class="px-6 py-4 text-sm text-gray-500 date" style="">
     <%=attendances.date %>
   </td>
 
-  <td class="px-6 py-4 text-sm text-gray-500">
-    <%=attendances.exception %>
+  <td class="px-6 py-4 text-sm text-gray-500 exception">
+    <div class="text-sm text-gray-500"><%=attendances.exception %></div>
   </td>
 
-  <td class="px-6 py-4 text-sm text-gray-500">
-    <%=attendances.clock_in %>
-  </td>
-
-
-  <td class="px-6 py-4 text-sm text-gray-500">
-    <%=attendances.clock_out %>
+  <td class="px-6 py-4 text-sm text-gray-500 clock_in">
+    <div class="text-sm text-gray-500"> <%=attendances.clock_in %></div>
   </td>
 
 
-  <td class="px-6 py-4 text-sm text-gray-500">
-    <%=attendances.break_in %>
+  <td class="px-6 py-4 text-sm text-gray-500 clock_out">
+    <div class="text-sm text-gray-500"> <%=attendances.clock_out %></div>
   </td>
 
 
-  <td class="px-6 py-4 text-sm text-gray-500">
-    <%=attendances.break_out %>
+  <td class="px-6 py-4 text-sm text-gray-500 break_in">
+    <div class="text-sm text-gray-500"> <%=attendances.break_in %></div>
   </td>
 
 
-  <td class="px-6 py-4 text-sm text-gray-500">
-    <%=attendances.break_duration %>
+  <td class="px-6 py-4 text-sm text-gray-500 break_out">
+    <div class="text-sm text-gray-500"> <%=attendances.break_out %></div>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500 break_duration">
+    <div class="text-sm text-gray-500"><%=attendances.break_duration %></div>
   </td>
 
 
 
-  <td class="px-6 py-4 text-sm text-gray-500">
-    <%=attendances.comment %>
+  <td class="px-6 py-4 text-sm text-gray-500 comment">
+    <div class="text-sm text-gray-500"><%=attendances.comment %></div>
   </td>
 
 

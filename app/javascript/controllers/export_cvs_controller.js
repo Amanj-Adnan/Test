@@ -7,9 +7,13 @@ export default class extends Controller {
     htmlToCSV(html, filename) {
         var data = [];
         var rows = document.getElementById("attendance_table");
-        for (var i = 0; i < rows.rows.length; i++) {
-            var row = [], cols = rows.rows[i].querySelectorAll("td, th");
-            // console.log( rows.rows[1].querySelectorAll("td, th"))
+        var len = rows.rows[0].querySelectorAll("td:not([style*=\"display: none\"]), th:not([style*=\"display: none\"])").length;
+        // console.log(rows)
+        // console.log(rows.rows[1].querySelectorAll("td:not([style*=\"display: none\"])"))
+        // return false
+        for (var i = 0; i < len ; i++) {
+            var row = [], cols = rows.rows[i].querySelectorAll("td:not([style*=\"display: none\"]), th:not([style*=\"display: none\"])");
+            // console.log( rows.rows[1].querySelectorAll("td :not([style*=\"display: none\"]), th:not([style*=\"display: none\"])"))
             for (var j = 0; j < cols.length; j++) {
                 row.push(cols[j].innerText);
             }

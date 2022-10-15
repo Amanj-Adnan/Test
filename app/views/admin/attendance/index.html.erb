@@ -84,7 +84,7 @@
         <div>
           <div class="mt-2">
             <%= form_with(url: admin_attendance_path, method: :get, ) do |f| %>
-              <% rows =  options_for_select([['Id','user_id'],['Name','eamil'],['Exception','exception'],['Clock_in','clock_in'],['Clock_out','clock_out'],['Break_in','break_in'],['Break_out','break_out'],['Break_duration','break_duration'],['Comment','comment']]) %>
+              <% rows =  options_for_select([['Id','user_id'],['Name','email'],['Date','date'],['Exception','exception'],['Clock_in','clock_in'],['Clock_out','clock_out'],['Break_in','break_in'],['Break_out','break_out'],['Break_duration','break_duration'],['Comment','comment']]) %>
           <%= f.select :employees, rows,{ include_blank: true } ,
                          data:{controller:"select2 datatable" , action:"change->datatable#select" ,select2_options_value:{hideSelectedOption: true, showSearch: true , class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json},
                          multiple:'multiple'
@@ -103,39 +103,39 @@
 
       <table id="attendance_table" class="divide-y  divide-gray-300 ">
             <thead class="bg-white">
-            <tr  id="attendance_table_row">
+            <tr  id="attendance_tablze_row">
               <th id="" class="px-6 py-2  text-gray-700 user_id">
                 ID
               </th>
-              <th id="" class="px-6 py-2 text-gray-700">
+              <th id="" class="px-6 py-2 text-gray-700 email">
                 Name
               </th>
-              <th class="px-6 py-2 text-gray-700">
+              <th class="px-6 py-2 text-gray-700 date">
                 Date
               </th>
-              <th class="px-6 py-2 text-gray-700">
+              <th class="px-6 py-2 text-gray-700 exception">
                 Exception
               </th>
-              <th id="" class="px-6 py-2 text-gray-700">
+              <th id="" class="px-6 py-2 text-gray-700 clock_in">
                 Clock_in
               </th>
 
-              <th class="px-6 py-2 text-gray-700">
+              <th class="px-6 py-2 text-gray-700 clock_out">
                 Clock_out
               </th>
 
-              <th class="px-6 py-2 text-gray-700">
+              <th class="px-6 py-2 text-gray-700 break_in">
                 Break_in
               </th>
 
-              <th class="px-6 py-2 text-gray-700">
+              <th class="px-6 py-2 text-gray-700 break_out">
                 Break_out
               </th>
 
-              <th class="px-6 py-2 text-gray-700">
+              <th class="px-6 py-2 text-gray-700 break_duration">
                 Break_duration
               </th>
-              <th class="px-6 py-2 text-gray-700">
+              <th class="px-6 py-2 text-gray-700 comment">
                 Comment
               </th>
 
