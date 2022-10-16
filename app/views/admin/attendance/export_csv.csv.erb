@@ -1,0 +1,15 @@
+<%= fields = [:user_id,:email,:date,:exception,:clock_in,:clock_out,:break_in,:break_out,:break_duration,:comment ].join(',') %>
+<% @attendance_csv.each do |attendance| %>
+ <%id = attendance.user.id %>
+ <%email = attendance.user.email %>
+ <%date = attendance.date %>
+ <%exception = attendance.exception %>
+ <%clock_in = attendance.clock_in %>
+ <%clock_out = attendance.clock_out %>
+ <%break_in = attendance.break_in %>
+ <%break_out = attendance.break_out %>
+ <%break_duration = attendance.break_duration %>
+ <%comment = attendance.comment %>
+
+ <%= [id.to_s,email,date.to_s,exception,clock_in.to_s,clock_out.to_s,break_in.to_s,break_out.to_s,break_duration.to_s,comment].join(',') %>
+<% end %>

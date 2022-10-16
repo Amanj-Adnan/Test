@@ -52,6 +52,8 @@ Rails.application.routes.draw do
   get '/admin/attendance/export' , to: 'attendance#export'
   get '/admin/attendance/import' , to: 'attendance#import'
 
+  get '/admin/attendance/export_csv' , to: 'attendance#export_csv'
+
   resources :items_imports ,only: [:index, :new, :create] , path: '/admin/items'
 
   # resources :user_profile ,only: [:show,:create,:new] , path: '/user_profile'

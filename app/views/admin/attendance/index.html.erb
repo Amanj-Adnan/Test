@@ -58,18 +58,31 @@
                       <div class="py-1 mt-2 text-lg font-bold ">Export All Filtered Rows :</div>
                       <div class="flex-col">
                         <div class="my-3 flex">
-                          <div class="py-2 mx-3 ">From :</div>
-                          <input  class=" border-2 w-auto border-gray-400 bg-white  px-5  rounded-lg text-sm" type="date">
-                          <div class="py-2 mx-3 ">To :</div>
-                          <input class=" border-2 w-auto border-gray-400 bg-white px-5 rounded-lg text-sm" type="date"></div>
-                        <div class="my-3 flex">
-                          <div class="py-2 mx-3 ">User_id :</div>
-                          <input class=" border-2 w-auto border-gray-400 bg-white px-5 rounded-lg text-sm" type="number" min="0">
-                        </div>
-                      </div>
-                      <button class="  ml-2  bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-full" data-controller="csv" data-action="click->csv#htmlToCSV" data-target="csv.html">
-                        Button
-                      </button>
+                          <%= form_with(url: admin_attendance_export_csv_path(format: :csv), method: :get, class:" flex" )do |f| %>
+                            <div class="py-2 mx-3 ">From :</div>
+                            <%= f.date_field :from,class:"border-2 w-auto border-gray-400 bg-white  px-5  rounded-lg text-sm"%>
+                            <div class="py-2 mx-3 ">To :</div>
+                            <%= f.date_field :to,class:"border-2 w-auto border-gray-400 bg-white  px-5  rounded-lg text-sm"%>
+                            </div>
+                            <div class="my-3 flex">
+                              <div class="py-2 mx-3 ">User_id :</div>
+                              <%= f.number_field :user_id, min:"1" ,class:"border-2 w-auto border-gray-400 bg-white  px-5  rounded-lg text-sm"%>
+                              <%= f.submit("Export", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 mx-3 rounded-full") %>
+                            </div>
+                            <%end %>
+                          </div>
+<!--                          <div class="py-2 mx-3 ">From :</div>-->
+<!--                          <input  class=" border-2 w-auto border-gray-400 bg-white  px-5  rounded-lg text-sm" type="date">-->
+<!--                          <div class="py-2 mx-3 ">To :</div>-->
+<!--                          <input class=" border-2 w-auto border-gray-400 bg-white px-5 rounded-lg text-sm" type="date"></div>-->
+<!--                        <div class="my-3 flex">-->
+<!--                          <div class="py-2 mx-3 ">User_id :</div>-->
+<!--                          <input class=" border-2 w-auto border-gray-400 bg-white px-5 rounded-lg text-sm" type="number" min="0">-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                      <button class="  ml-2  bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-full" data-controller="csv" data-action="click->csv#htmlToCSV" data-target="csv.html">-->
+<!--                        Button-->
+<!--                      </button>-->
                     </div>
                     <div class="flex justify-end items-center flex-wrap mt-6">
                       <div class="ml-2 px-4 py-1 text-sm text-red-500 hover:bg-red-300 bg-red-200 rounded-full" data-action="click->modal2#close">Close</div>

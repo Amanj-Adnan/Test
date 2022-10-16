@@ -66,6 +66,20 @@ class AttendanceController < ApplicationController
   end
 
 
+  def export_csv
+    @attendance_csv = Attendance.all
+    if params[:from] != ""
+      @to = params[:to]
+      if params[:to] == ""
+        @to = Date.now
+      end
+        @attendance_csv = @attendance_csv.where(:date => params[:from].to_s..@to.to_s)
+    end
+    if params[:user_id] != ""
+      @attendance_csv = @attendance_csv.where(:user_id => params[:user_id])
+    end
+    render 'admin/attendance/export_csv'
+    end
 
   def export
     @attendance=Attendance.order(date: :desc).all
