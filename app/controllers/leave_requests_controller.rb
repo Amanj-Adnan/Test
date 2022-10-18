@@ -28,6 +28,8 @@ class LeaveRequestsController < ApplicationController
   private
 
 
+
+
   def application_params
     params.require(:leave_request).permit(:leave_start_date,:leave_end_date,:leave_type,:reason,:certificate)
   end
