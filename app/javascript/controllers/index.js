@@ -41,5 +41,8 @@ application.register('csv', ExportCvsController)
 import DatatablesController from "./datatables_controller";
 application.register('datatable', DatatablesController)
 
+import RoleController from "./role_controller";
+application.register('role', RoleController)
+
 
 

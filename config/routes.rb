@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
 
   get '/admin/new_role' , to: 'roles/roles#new'
+  get '/admin/create_role' , to: 'roles/roles#create'
 
   # scope '/admin' do
   #   resources :attendance do

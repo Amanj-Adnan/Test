@@ -1,10 +1,69 @@
-         <% content_for :name do %>
-           CREATE NEW Role
+ <% content_for :name do %>
+   CREATE NEW Role
+ <% end %>
+
+
+ <% content_for :admin_content do %>
+   <div class="mt-12">
+
+     <div class="flex items-center justify-center  ">
+       <div class="max-w-md w-full space-y-8">
+         <div>
+           <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+             Create New Role
+           </h2>
+         </div>
+
+         <%= form_with model: @admin ,url:admin_create_role_path , html: {class:"mt-8 space-y-6"} do |f| %>
+           <div class="field">
+             <%= f.label :Name %><br />
+             <%= f.text_field :name, autofocus: true, class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+           </div>
+
+           <div class="container">
+             <%= f.label :"Permissions:"%><br />
+             <%= f.select :permissions, options_from_collection_for_select(@permissions, 'id' , 'name'),{ include_blank: true } ,
+                          data:{controller:"select2" , select2_options_value:{hideSelectedOption: true, showSearch: true , class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json},
+                          multiple:'multiple'
+             %>
+
+           </div>
+
+           <div class="">
+             <%= f.label :"Country" %><br />
+             <% countries = options_from_collection_for_select(@countries, 'id' , 'name' ) %>
+             <%= f.select :country,  countries,{ include_blank: true } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+           </div>
+
+           <div class="container">
+             <%= f.label :"Cities:"%><br />
+             <%= f.select :cities, options_from_collection_for_select(@cities, 'id' , 'name'),{ include_blank: true } ,
+                          data:{controller:"select2" , select2_options_value:{hideSelectedOption: true, showSearch: true , class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json},
+                          multiple:'multiple'
+             %>
+
+           </div>
+
+           <div class="container">
+             <%= f.label :"Offices:"%><br />
+             <%= f.select :offices, options_from_collection_for_select(@office, 'id' , 'name'),{ include_blank: true } ,
+                          data:{controller:"select2" , select2_options_value:{hideSelectedOption: true, showSearch: true , class: 'dropdown-container', placeholder: t('actions.click_to_add_lists')}.to_json},
+                          multiple:'multiple'
+             %>
+
+           </div>
+
+           <div class="">
+             <%= f.submit "Create" ,class:"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"%>
+           </div>
          <% end %>
 
 
-         <% content_for :admin_content do %>
 
-          hello there
+       </div>
+     </div>
 
-         <% end %>
+
+   </div>
+
+ <% end %>

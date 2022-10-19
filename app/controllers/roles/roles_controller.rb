@@ -12,6 +12,10 @@ class Roles::RolesController < ApplicationController
 
   def new
     @new_role =Role.new
+    @permissions = Permission.all
+    @countries = Country.all
+    @cities = City.all
+    @office = Office.all
     render "admin/roles/new"
   end
 
