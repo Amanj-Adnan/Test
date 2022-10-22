@@ -1,0 +1,7 @@
+<%= turbo_stream.update @target do %>
+
+  <%= options_for_select @offices.collect {|a| [a.name, a.id]}  %>
+
+  <%# cities = options_from_collection_for_select(@cites, 'id', 'name' ) %>
+
+<%end %>

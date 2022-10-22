@@ -38,7 +38,11 @@ Rails.application.routes.draw do
 
 
   get '/admin/new_role' , to: 'roles/roles#new'
-  get '/admin/create_role' , to: 'roles/roles#create'
+  post '/admin/create_role' , to: 'roles/roles#create'
+  get '/admin/create_role/set_cities' , to: 'roles/roles#set_cities'
+  get '/admin/create_role/set_offices' , to: 'roles/roles#set_offices'
+
+
 
   # scope '/admin' do
   #   resources :attendance do

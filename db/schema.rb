@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_19_175107) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_22_202007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -143,14 +143,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_175107) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.bigint "super_user_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "country_id", default: 0
     t.text "city_id", default: [], array: true
     t.text "office_id", default: [], array: true
-    t.index ["super_user_id"], name: "index_roles_on_super_user_id"
   end
 
   create_table "roles_permissions", force: :cascade do |t|
@@ -167,6 +165,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_19_175107) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "role_id", default: 0
+    t.index ["role_id"], name: "index_super_users_on_role_id"
   end
 
   create_table "user_profiles", force: :cascade do |t|
