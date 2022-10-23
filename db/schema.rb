@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_22_202007) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_23_181314) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -133,6 +133,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_202007) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "permissions_roles", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "permission_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permission_id"], name: "index_permissions_roles_on_permission_id"
+    t.index ["role_id"], name: "index_permissions_roles_on_role_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -149,15 +158,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_202007) do
     t.integer "country_id", default: 0
     t.text "city_id", default: [], array: true
     t.text "office_id", default: [], array: true
-  end
-
-  create_table "roles_permissions", force: :cascade do |t|
-    t.bigint "role_id", null: false
-    t.bigint "permission_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["permission_id"], name: "index_roles_permissions_on_permission_id"
-    t.index ["role_id"], name: "index_roles_permissions_on_role_id"
   end
 
   create_table "super_users", force: :cascade do |t|
@@ -222,8 +222,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_202007) do
   add_foreign_key "leave_requests", "users", column: "line_manager_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "permissions_roles", "permissions"
+  add_foreign_key "permissions_roles", "roles"
   add_foreign_key "posts", "users"
-  add_foreign_key "roles_permissions", "permissions"
-  add_foreign_key "roles_permissions", "roles"
   add_foreign_key "user_profiles", "users"
 end

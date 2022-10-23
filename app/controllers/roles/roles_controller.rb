@@ -16,6 +16,7 @@ class Roles::RolesController < ApplicationController
     @permissions = Permission.all
     @countries = Country.all
     @office = Office.all
+    @roles = Role.all
     render "admin/roles/new"
   end
 
@@ -64,15 +65,18 @@ class Roles::RolesController < ApplicationController
   end
 
   def create
-    @permissions = params[:permissions].reject(&:empty?)
-    @role = Role.create!(get_role_prams)
-    @role_permissions = @role.roles_permissions.create(get_params)
-    if @role_permissions.save
+    ActiveRecord::Base.transaction do
+      @permissions = params[:permissions].reject(&:empty?)
+      @cities =  params[:cities].reject(&:empty?)
+      @offices =  params[:offices].reject(&:empty?)
+      @role = Role.create!(name: params[:name],country_id:params[:country],city_id:@cities,office_id:@offices ).permission_ids=@permissions
+      flash[:alert] = "Role is Created"
       redirect_to admin_create_role_path
-    else
-      render :new
     end
 
+   rescue ActiveRecord::RecordInvalid
+     flash[:error] = "Something went wrong, Name must be unique"
+     redirect_to admin_create_role_path
   end
 
   def update
