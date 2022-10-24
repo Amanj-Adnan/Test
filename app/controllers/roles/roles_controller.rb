@@ -15,7 +15,7 @@ class Roles::RolesController < ApplicationController
     @new_role =Role.new
     @permissions = Permission.all
     @countries = Country.all
-    @office = Office.all
+    # @office = Office.all
     @roles = Role.all
     render "admin/roles/new"
   end
@@ -61,7 +61,22 @@ class Roles::RolesController < ApplicationController
   end
 
   def edit
-
+    @role = Role.find_by(id: params[:role_id])
+    @permissions = Permission.all
+    @permission_ids = @role.permission_ids
+    @countries = Country.all
+    @country = @role.country_id
+    @offices = @role.office_id.to_a
+    @cities = @role.city_id.to_a
+     @city = Country.find_by(id:@country).cities
+    puts(@city)
+    @office = []
+    @city.each do |city|
+      @office << city.offices
+    end
+    @office = @office.flatten
+    @roles = Role.all
+    render "admin/roles/edit"
   end
 
   def create
