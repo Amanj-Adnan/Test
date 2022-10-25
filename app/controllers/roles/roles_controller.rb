@@ -95,7 +95,25 @@ class Roles::RolesController < ApplicationController
   end
 
   def update
+    ActiveRecord::Base.transaction do
+      @role = Role.find_by(id: params[:role_id])
+      @permissions = params[:permissions].reject(&:empty?)
+      @cities =  params[:cities].reject(&:empty?)
+      @offices =  params[:offices].reject(&:empty?)
+      @role.update(name: params[:name],country_id:params[:country],city_id:@cities,office_id:@offices)
 
+      @permissions.each do |id|
+        @permission = Permission.find_by(id:id)
+        @role.permissions << @permission
+      end
+
+      flash[:alert] = "Role is Updated"
+      redirect_to admin_create_role_path
+    end
+
+  rescue ActiveRecord::RecordInvalid
+    flash[:error] = "Something went wrong, Name must be unique"
+    redirect_to admin_create_role_path
   end
 
   def destroy
