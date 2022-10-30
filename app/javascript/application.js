@@ -4,7 +4,9 @@
 // import "controllers"
 
 import "@hotwired/turbo-rails"
-import "controllers"
+import "./controllers/application.js"
+import "./controllers/index.js"
+import "./controllers/stimulus_slimselect_controller.js"
 
 
  // import "./controllers"
