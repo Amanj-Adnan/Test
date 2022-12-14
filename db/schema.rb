@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_23_181314) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_184406) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_181314) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "categories_roles", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_categories_roles_on_category_id"
+    t.index ["role_id"], name: "index_categories_roles_on_role_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -125,21 +141,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_181314) do
     t.bigint "user_id"
     t.index ["city_id"], name: "index_offices_on_city_id"
     t.index ["user_id"], name: "index_offices_on_user_id"
-  end
-
-  create_table "permissions", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "permissions_roles", force: :cascade do |t|
-    t.bigint "role_id", null: false
-    t.bigint "permission_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["permission_id"], name: "index_permissions_roles_on_permission_id"
-    t.index ["role_id"], name: "index_permissions_roles_on_role_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -217,13 +218,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_181314) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attendances", "users"
+  add_foreign_key "categories_roles", "categories"
+  add_foreign_key "categories_roles", "roles"
   add_foreign_key "leave_requests", "users"
   add_foreign_key "leave_requests", "users", column: "hr_officer_id"
   add_foreign_key "leave_requests", "users", column: "line_manager_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
-  add_foreign_key "permissions_roles", "permissions"
-  add_foreign_key "permissions_roles", "roles"
   add_foreign_key "posts", "users"
   add_foreign_key "user_profiles", "users"
 end

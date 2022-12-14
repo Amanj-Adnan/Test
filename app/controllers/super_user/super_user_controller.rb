@@ -16,11 +16,24 @@ class  SuperUser::SuperUserController < ApplicationController
   end
 
   def new
+
+    @roles = Role.all
     @new_super_user = SuperUser.new
     render "admin/super_users/new"
   end
 
   def create
+
+    @new_super_user = SuperUser.create!(:email => params[:email] ,:password => params[:password],:role_id =>params[:role_id])
+
+    if @new_super_user.save
+      flash[:alert] = "Super user created"
+      redirect_to admin_super_users_path
+    else
+      flash[:alert] = @new_super_user.errors
+      redirect_back fallback_location:admin_create_super_user_path
+    end
+
 
   end
 
@@ -38,5 +51,8 @@ class  SuperUser::SuperUserController < ApplicationController
       redirect_to root_path
     end
   end
+
+  private
+
 
 end

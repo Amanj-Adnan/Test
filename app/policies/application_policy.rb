@@ -4,9 +4,15 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
-    @user = user
+
+    @user = user.user
+    @admin = user.admin
+
     @record = record
   end
+
+
+
 
   def index?
     false

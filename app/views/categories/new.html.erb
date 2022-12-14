@@ -1,0 +1,38 @@
+<% content_for :name do %>
+<% end %>
+
+
+<% content_for :admin_content do %>
+  <div class="flex flex-col m-3 w-full justify-center">
+
+    <%= form_with model: @category ,url:admin_category_create_path  , html: {class:"mt-8  flex "} do |f| %>
+
+      <div class="flex flex-col m-3 w-full justify-center items-center ">
+        <div class="flex flex-col  w-full justify-center items-center">
+
+          <div class="w-1/2">
+            <%= f.label :"Category Name:" %><br />
+            <%= f.select :category_name,  options_for_select(@category_list),{ include_blank: true } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+          </div>
+
+          <div class="m-3">
+            <%= f.submit "Add New Category" ,class:"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+
+          </div>
+        </div>
+
+        <span class="w-full mt-3  mr-6 p-0.5 bg-black "></span>
+
+        <span class=" mt-6  font-bold text-2xl text-black">Categories</span>
+
+      </div>
+
+
+    <%end%>
+
+    <%= render partial: "categories/categories", collection:  @categories,  as: :category%>
+
+  </div>
+
+
+<% end %>

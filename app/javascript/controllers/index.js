@@ -44,5 +44,9 @@ application.register('datatable', DatatablesController)
 import RoleController from "./role_controller";
 application.register('role', RoleController)
 
+import PermissionsController from "./permissions_controller";
+application.register('permission', PermissionsController)
+
+
 
 

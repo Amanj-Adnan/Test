@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-
   def after_sign_in_path_for(resource)
     if session[:admin_id]!=nil
       admin_users_path
@@ -11,6 +10,10 @@ class ApplicationController < ActionController::Base
       user_profile_show_path(current_user.id)
     end
 
+  end
+
+  def pundit_user
+    AdminContext.new(current_user,session[:admin_id])
   end
 
   def after_sign_out_path_for(resource_or_scope)
@@ -31,6 +34,7 @@ class ApplicationController < ActionController::Base
     if session[:admin_id] == nil
       redirect_to root_path
     elsif SuperUser.find_by(params[id: session[:admin_id] ])
+
       redirect_to request.fullpath unless request.fullpath == request.fullpath
     end
   end

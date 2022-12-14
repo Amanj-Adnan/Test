@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
 
   get '/admin/create_super_user', to: 'super_user/super_user#new'
+  post '/admin/create_super_user', to: 'super_user/super_user#create'
   delete '/admin/super_user', to: 'super_user/super_user#destroy'
 
 
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
 
 
   get '/admin/super_users' , to: 'admin/super_users#index'
+  get '/admin/super_users/edit' , to: 'admin/super_users#edit'
+  put '/admin/super_users/update' , to: 'admin/super_users#update'
 
 
   get '/admin/new_role' , to: 'roles/roles#new'
@@ -111,5 +114,10 @@ Rails.application.routes.draw do
 
   get 'admin/office', to:"offices#new"
   post 'admin/office', to:"offices#create"
+
+  get 'admin/category/new', to:"categories#new"
+  post 'admin/category/create', to:"categories#create"
+  delete 'admin/category/destroy', to:"categories#destroy"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

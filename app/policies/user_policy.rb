@@ -1,5 +1,7 @@
 class UserPolicy < ApplicationPolicy
+  # user = user.user
   def index?
+
     # user.id == record.line_manager_id || user.id == record.user.user_workflow.office.user_id
     if user.office != nil
       user.id == user.office.user_id || user.id == user.user_workflow.workflow_manager

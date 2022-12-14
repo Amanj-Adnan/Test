@@ -15,6 +15,12 @@ class Roles::RolesController < ApplicationController
     @new_role =Role.new
     @permissions = Permission.all
     @countries = Country.all
+    @categories =Category.all
+    @category_names = []
+    @categories.each do |category|
+      @word = category.name.split('_')[0]
+      @category_names<<@word
+    end
     # @office = Office.all
     @roles = Role.all
     render "admin/roles/new"
@@ -80,11 +86,12 @@ class Roles::RolesController < ApplicationController
   end
 
   def create
+    puts(params)
+
     ActiveRecord::Base.transaction do
-      @permissions = params[:permissions].reject(&:empty?)
       @cities =  params[:cities].reject(&:empty?)
       @offices =  params[:offices].reject(&:empty?)
-      @role = Role.create!(name: params[:name],country_id:params[:country],city_id:@cities,office_id:@offices ).permission_ids=@permissions
+      @role = Role.create!(name: params[:name],country_id:params[:country],city_id:@cities,office_id:@offices).permission_ids = @permissions
       flash[:alert] = "Role is Created"
       redirect_to admin_create_role_path
     end

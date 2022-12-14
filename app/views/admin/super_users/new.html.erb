@@ -15,7 +15,7 @@
           </h2>
         </div>
 
-        <%= form_with model: @admin ,url:admin_sign_in_path , html: {class:"mt-8 space-y-6"} do |f| %>
+        <%= form_with model: @admin ,url:admin_create_super_user_path , html: {class:"mt-8 space-y-6"} do |f| %>
           <div class="field">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
@@ -26,17 +26,13 @@
             <%= f.password_field :password, autocomplete: "current-password" , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
           </div>
 
-          <div class="field">
-            <%= f.label :Name %><br />
-            <%= f.password_field :password, autocomplete: "current-password" , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
-          </div>
 
 
           <div class="field">
-            <%= f.label :Role %><br />
-            <%= f.password_field :password, autocomplete: "current-password" , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
+            <%= f.label :"Role" %><br />
+            <% options = options_from_collection_for_select(@roles, 'id', 'name' ) %>
+            <%= f.select :role_id,  options,{ include_blank: true  } , class:"appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"%>
           </div>
-
 
 
           <div class="">

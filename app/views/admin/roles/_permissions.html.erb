@@ -1,0 +1,70 @@
+<tbody class="bg-white divide-y divide-gray-300" >
+<tr class="whitespace-nowrap">
+  <td class="px-6 py-4">
+    <div class="text-sm ml-8 px-4 text-gray-900">
+      <%= category.name %>
+    </div>
+  </td>
+
+  <td class=" py-4 text-sm text-gray-500">
+    <div class="block">
+      <div class="mt-2">
+        <label class="inline-flex items-center">
+          <%= f.check_box category.name+'_view' ,class:"w-6 ml-10  h-6 text-green-600 border-green-1 rounded-md focus:ring-0 #{category.name}",
+          data:{controller:"permission",action:"click->permission#deselect_all"}%>
+<!--          <input type="checkbox" class="w-6 ml-10  h-6 text-green-600 border-green-1 rounded-md focus:ring-0 <%#=category.name %>"  data-action="click->permission#deselect_all" data-controller="permission" />-->
+        </label>
+      </div>
+    </div>
+  </td>
+
+  <td class="px-20 py-4 px- text-sm text-gray-500">
+    <div class="block">
+      <div class="mt-2">
+        <label class="inline-flex items-center">
+          <%= f.check_box category.name+'_add' ,class:"w-6 ml-20  h-6 text-green-600 border-green-1 rounded-md focus:ring-0 #{category.name}",
+                            data:{controller:"permission",action:"click->permission#deselect_all"}%>
+<!--          <input type="checkbox" class="w-6 ml-16 h-6 text-green-600 border-green-1 rounded-md focus:ring-0 <%#=category.name %>"  data-action="click->permission#deselect_all" data-controller="permission" />-->
+        </label>
+      </div>
+    </div>
+  </td>
+
+  <td class="px-20 py-4 text-sm text-gray-500">
+    <div class="block">
+      <div class="mt-2">
+        <label class="inline-flex items-center">
+          <%= f.check_box category.name+'_update' ,class:"w-6 ml-12  h-6 text-green-600 border-green-1 rounded-md focus:ring-0 #{category.name}",
+                            data:{controller:"permission",action:"click->permission#deselect_all"}%>
+<!--          <input type="checkbox" class="w-6 ml-16 h-6 text-green-600 border-green-1 rounded-md focus:ring-0 <%#=category.name %>"  data-action="click->permission#deselect_all" data-controller="permission" />-->
+        </label>
+      </div>
+    </div>
+  </td>
+
+  <td class="px-20 py-4 text-sm text-gray-500">
+    <div class="block">
+      <div class="mt-2">
+        <label class="inline-flex items-center">
+          <%= f.check_box category.name+'_delete' ,class:"w-6 ml-12  h-6 text-green-600 border-green-1 rounded-md focus:ring-0 #{category.name}",
+                            data:{controller:"permission",action:"click->permission#deselect_all"}%>
+<!--          <input type="checkbox" class="w-6 ml-14 h-6 text-green-600 border-green-1 rounded-md focus:ring-0 <%#=category.name %>"  data-action="click->permission#deselect_all" data-controller="permission" />-->
+        </label>
+      </div>
+    </div>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500 " >
+    <div class="block">
+      <div class="mt-2">
+        <label class="inline-flex items-center">
+          <input type="checkbox" class="w-6 ml-10 h-6 text-green-600 border-green-1 rounded-md focus:ring-0 " id="<%=category.name %>_all" data-action="click->permission#select_all" data-controller="permission" />
+        </label>
+      </div>
+    </div>
+  </td>
+
+
+</tr>
+
+</tbody>

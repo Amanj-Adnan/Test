@@ -6,13 +6,13 @@
           <%=link_to "#{role.name}" , admin_edit_role_path(:role_id => role.id)%>
           <span class="w-1/3 mt-3  mr-6 p-0.5 bg-gray-800 "></span>
           <div class="flex mt-3 text-sm font-medium text-gray-700">
-            <% if role.permissions.length > 0%>
-              <% role.permissions.each do |permission| %>
-              <p><%=permission.name %>,</p>
-              <%end %>
-            <% elsif role.name == "admin"%>
-              <p>Have all access to the system</p>
-            <%end %>
+            <%# if role.permissions.length > 0%>
+              <%# role.permissions.each do |permission| %>
+<!--              <p><%#=permission.name %>,</p>-->
+              <%#end %>
+            <%# elsif role.name == "admin"%>
+<!--              <p>Have all access to the system</p>-->
+            <%#end %>
           </div>
         </div>
       </li>
