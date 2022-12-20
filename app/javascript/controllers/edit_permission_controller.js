@@ -4,9 +4,8 @@ export default class extends Controller {
 
     select_all(){
         var text = this.element.id;
-        var myArray = text.split("_all");
+        var myArray = text.split("_");
         var word = myArray[0];
-        console.log(word)
         if (this.element.checked) {
             var checkboxes = document.getElementsByClassName(word);
             for(var i=0, n=checkboxes.length;i<n;i++) {

@@ -21,7 +21,7 @@ class UserWorkflowsController < ApplicationController
                 params[:user][:employees].each do |id|
                     if id != ''
                     @user = User.find_by(id:id)
-                    @user.update!(user_workflow_id:@new_workflow.id )
+                    @user.update!(user_workflow_id:@new_workflow.id, line_manager_id: params[:user][:workflow_manager] )
                     @user_profile = UserProfile.find_by(user_id:id)
                     @user_profile.update!(working_office:params[:office_id] , line_manager: params[:user][:workflow_manager] )
                     end

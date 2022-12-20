@@ -1,0 +1,17 @@
+<% content_for :name do %>
+
+<% end %>
+
+
+<% content_for :admin_content do %>
+ <div class="m-2">
+
+   <p class="font-bold text-2xl">Roles</p>
+
+   <div class="mx-4 mt-8">
+     <%= render partial: "admin/roles/roles", collection:  @roles,  as: :role%>
+   </div>
+ </div>
+
+
+<% end %>

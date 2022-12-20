@@ -5,10 +5,13 @@ class LeaveRequestPolicy < ApplicationPolicy
   # end
 
   def index?
+    @user_workflow=UserWorkflow.find_by(workflow_manager:user.id)
     if user.office != nil
       user.id == user.office.user_id || user.id == user.user_workflow.workflow_manager
     elsif user.line_manager != nil
       user.id == user.line_manager.workflow_manager.to_i
+    elsif user.id.to_i == @user_workflow.workflow_manager.to_i
+      true
     end
   end
 

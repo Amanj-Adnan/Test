@@ -4,7 +4,8 @@ class Roles::RolesController < ApplicationController
   layout('admin' )
 
   def index
-
+    @roles = Role.all
+    render "admin/roles/index"
   end
 
   def show
@@ -19,8 +20,13 @@ class Roles::RolesController < ApplicationController
     @category_names = []
     @categories.each do |category|
       @word = category.name.split('_')[0]
-      @category_names<<@word
+      if @category_names.empty?
+        @category_names<<category
+      elsif @category_names.last.name.split('_')[0] != @word
+        @category_names<<category
+      end
     end
+    @categories = @category_names
     # @office = Office.all
     @roles = Role.all
     render "admin/roles/new"
@@ -68,30 +74,62 @@ class Roles::RolesController < ApplicationController
 
   def edit
     @role = Role.find_by(id: params[:role_id])
-    @permissions = Permission.all
-    @permission_ids = @role.permission_ids
-    @countries = Country.all
-    @country = @role.country_id
-    @offices = @role.office_id.to_a
-    @cities = @role.city_id.to_a
-     @city = Country.find_by(id:@country).cities
-    puts(@city)
-    @office = []
-    @city.each do |city|
-      @office << city.offices
+    if @role.name == 'admin'
+      flash[:error] = "You can't edit admin role"
+      redirect_to admin_roles_path
+    else
+      # @permissions = Permission.all
+      # @permission_ids = @role.permission_ids
+      @countries = Country.all
+      @country = @role.country_id
+      @offices = @role.office_id.to_a
+      @cities = @role.city_id.to_a
+      @city = Country.find_by(id:@country).cities
+      @office = []
+      @city.each do |city|
+        @office << city.offices
+      end
+      @selected_category_ids = @role.category_ids
+      @selected_permissions = {}
+      @categories = Category.all
+      @category_names = []
+      @categories.each do |category|
+        @word = category.name.split('_')[0]
+        if @category_names.empty?
+          @category_names<<category
+        elsif @category_names.last.name.split('_')[0] != @word
+          @category_names<<category
+        end
+        if @selected_category_ids.include? category.id
+          @selected_permissions.merge!({category.name => true})
+        else
+          @selected_permissions.merge!({category.name => false})
+        end
+      end
+      @categories = @category_names
+      @office = @office.flatten
+      render "admin/roles/edit"
     end
-    @office = @office.flatten
-    @roles = Role.all
-    render "admin/roles/edit"
+
   end
 
   def create
-    puts(params)
+
+    @selected_categories = []
+    @categories = Category.all
+
+    @categories.each do |category|
+
+      if params[category.name] == "1"
+        @selected_categories<<category.id
+      end
+      # @selected_categories<<{ category.name => params[category.name] }
+    end
 
     ActiveRecord::Base.transaction do
       @cities =  params[:cities].reject(&:empty?)
       @offices =  params[:offices].reject(&:empty?)
-      @role = Role.create!(name: params[:name],country_id:params[:country],city_id:@cities,office_id:@offices).permission_ids = @permissions
+      @role = Role.create!(name: params[:name],country_id:params[:country],city_id:@cities,office_id:@offices).category_ids = @selected_categories
       flash[:alert] = "Role is Created"
       redirect_to admin_create_role_path
     end
@@ -102,25 +140,33 @@ class Roles::RolesController < ApplicationController
   end
 
   def update
-    ActiveRecord::Base.transaction do
-      @role = Role.find_by(id: params[:role_id])
-      @permissions = params[:permissions].reject(&:empty?)
-      @cities =  params[:cities].reject(&:empty?)
-      @offices =  params[:offices].reject(&:empty?)
-      @role.update(name: params[:name],country_id:params[:country],city_id:@cities,office_id:@offices)
+    @selected_categories = []
+    @categories = Category.all
 
-      @permissions.each do |id|
-        @permission = Permission.find_by(id:id)
-        @role.permissions << @permission
+    puts( params[:role])
+    @categories.each do |category|
+      if params[:role][category.name] == "1"
+        @selected_categories<<category.id
       end
-
-      flash[:alert] = "Role is Updated"
-      redirect_to admin_create_role_path
     end
+     ActiveRecord::Base.transaction do
+       @role = Role.find_by(id: params[:role_id])
+       # @permissions = params[:permissions].reject(&:empty?)
+       @cities =  params[:role][:cities].reject(&:empty?)
+       @offices =  params[:role][:offices].reject(&:empty?)
+      @role.update(name: params[:role][:name],country_id:params[:role][:country],city_id:@cities,office_id:@offices)
+
+      @selected_categories.each do |id|
+         @permission = Category.find_by(id:id)
+         @role.categories << @permission
+       end
+      flash[:alert] = "Role is Updated"
+      redirect_to admin_roles_path
+     end
 
   rescue ActiveRecord::RecordInvalid
     flash[:error] = "Something went wrong, Name must be unique"
-    redirect_to admin_create_role_path
+    redirect_to admin_roles_path
   end
 
   def destroy

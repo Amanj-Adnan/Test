@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   has_one :office , foreign_key: "user_id"
 
-  belongs_to :line_manager, class_name: 'UserWorkflow', foreign_key: 'line_manager_id'
+  belongs_to :line_manager, class_name: 'UserWorkflow', foreign_key: 'line_manager_id' , optional: true
 
 
 

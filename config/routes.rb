@@ -44,8 +44,9 @@ Rails.application.routes.draw do
   post '/admin/create_role' , to: 'roles/roles#create'
   get '/admin/create_role/set_cities' , to: 'roles/roles#set_cities'
   get '/admin/create_role/set_offices' , to: 'roles/roles#set_offices'
-  get '/admin/edit_role' , to: 'roles/roles#edit'
-  put '/admin/edit_role' , to: 'roles/roles#update'
+  get '/admin/roles/edit' , to: 'roles/roles#edit'
+  get '/admin/roles' , to: 'roles/roles#index'
+  put '/admin/roles' , to: 'roles/roles#update'
 
 
   # scope '/admin' do

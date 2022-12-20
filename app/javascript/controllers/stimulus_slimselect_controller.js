@@ -12,9 +12,9 @@ export default class extends Controller {
             ...this.optionsValue
         });
     }
-    //
-    // disconnect() {
-    //     this.slimselect.destroy();
-    // }
+
+    disconnect() {
+        this.slimselect.destroy();
+    }
 }
 
