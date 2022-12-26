@@ -6,4 +6,10 @@ class SuperUser < ApplicationRecord
 
   validates :email , :password, :role_id , presence: true
 
+  before_update do
+    if self.role.name == 'admin'
+      throw(:abort)
+    end
+  end
+
 end

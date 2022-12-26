@@ -13,6 +13,7 @@ class Admin::SuperUsersController <  ApplicationController
 
   def edit
     @super_user = SuperUser.find_by(id:params[:admin_id])
+    authorize(@super_user)
     @roles = Role.all
     @role = Role.find_by(id:@super_user.role_id).id
     render "admin/super_users/edit"
@@ -20,12 +21,12 @@ class Admin::SuperUsersController <  ApplicationController
 
   def update
     @user =  SuperUser.find_by!(id:params[:admin_id])
-
+    authorize(@user)
     if @user.update(get_prams)
       redirect_to admin_super_users_path
     else
       flash[:alert] = "Something Went Wrong"
-      redirect_to admin_super_users_edit_path
+      redirect_to admin_super_users_edit_path(admin_id:params[:admin_id])
     end
   end
 

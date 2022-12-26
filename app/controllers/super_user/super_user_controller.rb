@@ -19,13 +19,14 @@ class  SuperUser::SuperUserController < ApplicationController
 
     @roles = Role.all
     @new_super_user = SuperUser.new
+    authorize(@new_super_user)
     render "admin/super_users/new"
   end
 
   def create
 
     @new_super_user = SuperUser.create!(:email => params[:email] ,:password => params[:password],:role_id =>params[:role_id])
-
+    authorize(@new_super_user)
     if @new_super_user.save
       flash[:alert] = "Super user created"
       redirect_to admin_super_users_path
