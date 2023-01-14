@@ -1,0 +1,60 @@
+<% content_for :name do %>
+ <p>Users Report</p>
+<% end %>
+
+
+<% content_for :admin_content do %>
+  <div class="overflow-auto">
+
+    <div class="mt-10 mx-3 justify-center">
+
+
+
+      <div class=" border-b border-gray-200 shadow ">
+        <table class="w-full divide-y  divide-gray-300 ">
+          <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-2  text-gray-700">
+              ID
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Email
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Workflow Name
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Line Manager
+            </th>
+            <th class="px-6 py-2 text-gray-700">
+              Country
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              City
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Office
+            </th>
+
+            <th class="px-6 py-2 text-gray-700">
+              Action
+            </th>
+
+
+          </tr>
+          </thead>
+
+          <%= render partial: "users_report/users", collection: @users ,as: :user %>
+
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+<% end %>
+
+

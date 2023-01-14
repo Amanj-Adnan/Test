@@ -14,6 +14,10 @@
  *= require_self
  */
 
+/*
+ *= require font-awesome
+ */
+
 /*input[type="range"] {*/
 /*    -webkit-appearance: none;*/
 /*    width: 90%;*/

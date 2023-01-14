@@ -24,8 +24,11 @@ class User < ApplicationRecord
 
 
   scope :without_user_profiles, -> { where('NOT EXISTS(SELECT 1 FROM user_profiles WHERE user_id = users.id)') }
+  scope :with_user_profiles, -> { where(' EXISTS(SELECT 1 FROM user_profiles WHERE user_id = users.id)') }
   scope :without_user_profiles_2, -> { where.missing(:user_profile) }
   # scope :hr_officers, ->{where('SELECT * FROM user_profiles WHERE position LIKE '%hr%' ')}
+
+
 
 
 

@@ -1,0 +1,55 @@
+<tbody class="bg-white w-full divide-y divide-gray-300">
+<tr class="whitespace-nowrap">
+  <td class="px-6 py-4">
+    <div class=" flex justify-center text-sm text-gray-900">
+      <%=user.id %>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class=" flex justify-center text-sm text-gray-500"> <%=user.email%></div>
+  </td>
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <% if user.user_workflow != nil %>
+      <div class="flex justify-center"><%=user.user_workflow.workflow_name%></div>
+    <%end %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <% if user.user_workflow_id != 0 %>
+    <div class="flex justify-center"><%=User.find(user.user_workflow.workflow_manager).email%></div>
+    <%end %>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <% if user.user_workflow != nil %>
+      <div class="flex justify-center"><%=user.user_workflow.office.city.country.name%></div>
+    <%end %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <% if user.user_workflow != nil %>
+      <div class="flex justify-center"><%=user.user_workflow.office.city.name%></div>
+    <%end %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <% if user.user_workflow != nil %>
+      <div class="flex justify-center"><%=user.user_workflow.office.name%></div>
+    <%end %>
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+    <div class="flex justify-center">
+      <%= link_to admin_user_report_path(user_id: user.id) , class:"px-3 py-2 text-sm text-indigo-600 bg-indigo-200 hover:bg-indigo-300 rounded-full font-weight-bold text-md" do %>
+        <i class="fa fa-eye "></i>
+        <% end %>
+    </div>
+  </td>
+
+
+</tr>
+
+</tbody>

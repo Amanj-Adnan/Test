@@ -49,6 +49,11 @@ Rails.application.routes.draw do
   put '/admin/roles' , to: 'roles/roles#update'
 
 
+  get '/admin/users_report' , to: 'users_report#index'
+  get '/admin/user_report' , to: 'users_report#show'
+  get '/admin/monthly_report' , to: 'users_report#monthly_report'
+
+
   # scope '/admin' do
   #   resources :attendance do
   #     collection do

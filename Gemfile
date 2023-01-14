@@ -81,6 +81,7 @@ gem "sprockets-rails"
 gem 'rack-cors'
 gem 'kaminari'
 gem 'pg_search'
+gem "font-awesome-rails"
 
 
 gem 'net-smtp'

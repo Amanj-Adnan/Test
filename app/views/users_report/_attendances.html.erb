@@ -1,0 +1,38 @@
+<tbody class="bg-white w-full divide-y divide-gray-300">
+<tr class="whitespace-nowrap">
+  <td class="px-6 py-4">
+    <div class=" flex justify-center text-sm text-gray-900">
+      <%=@user.id %>
+    </div>
+  </td>
+  <td class="px-6 py-4">
+    <div class=" flex justify-center text-sm text-gray-500"> <%=@user.email%></div>
+  </td>
+  <td class="px-6 py-4 text-sm text-gray-500">
+      <div class="flex justify-center"><%= attendances.date%></div>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+      <div class="flex justify-center"><%= attendances.clock_in%></div>
+  </td>
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+
+      <div class="flex justify-center"><%= attendances.clock_out%></div>
+
+  </td>
+
+
+  <td class="px-6 py-4 text-sm text-gray-500">
+
+      <div class="flex justify-center"><%= attendances.exception%></div>
+
+  </td>
+
+
+
+
+
+</tr>
+
+</tbody>

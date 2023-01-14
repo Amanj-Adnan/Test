@@ -1,0 +1,17 @@
+<%@days.each do |day|%>
+
+<div class="m-2">
+  <div class="bg-white p-2 rounded-lg shadow-md">
+    <h1 class="text-l font-bold"><%= day.to_date.strftime("%d/%m/%Y") %></h1>
+    <div class="mt-4 mb-4">
+
+    </div>
+    <h3 class="text-xs uppercase">Any Exception:</h3>
+    <h2 class="tracking-wide">
+      <%= nil ? "" : "NO" %>
+    </h2>
+  </div>
+
+</div>
+
+<% end %>
