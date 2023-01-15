@@ -18,9 +18,6 @@ class UsersReportController < ApplicationController
      @new_date1  = "#{params[:month]}-01".to_date
      @new_date2  = "#{params[:month]}-31".to_date
      @attendances_date = Attendance.where(user_id: params[:user_id]).where(date: @new_date1..@new_date2)
-    puts('amanjamanjamanjamanjamanjamanj')
-    puts(@attendances_date)
-    puts('amanjamanjamanjamanjamanjamanj')
     @date = DateTime.now.strftime("%m/%Y")
     @month = DateTime.new(2022,10)
     @days=[]
@@ -28,6 +25,13 @@ class UsersReportController < ApplicationController
     (@month.day.to_i .. @month.to_date.end_of_month.day.to_i).each do |day|
       @days<<  DateTime.new(2022,10,day.to_i)
     end
+
+    render 'users_report/monthly_report'
+  end
+
+
+  def print
+
 
     render 'users_report/monthly_report'
   end

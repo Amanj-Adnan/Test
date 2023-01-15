@@ -1,22 +1,13 @@
 
-<% content_for :name do %>
-
-  <p class="flex justify-center text-xl font-bold text-gray-700"> AMANJ ADNAN OMER</p>
-
-<% end %>
-
-
-<% content_for :admin_content do %>
-
-  <div class="m-6">
+<div class="m-6">
 
     <div class="overflow-x-auto shadow-md sm:rounded-lg">
 
       <div class="flex flex-row justify-between  items-center bg-yellow-300">
 
-          <div class="m-3"><%= @date %></div>
-          <div class="mt-1"><%= @user.user_profile.nmae %></div>
-          <div class="m-3">User ID : <%= @user.id %></div>
+        <div class="m-3"><%= @date %></div>
+        <div class="mt-1"><%= @user.user_profile.nmae %></div>
+        <div class="m-3">User ID : <%= @user.id %></div>
       </div>
 
       <div class="flex flex-row justify-center  items-center bg-yellow-300">
@@ -35,7 +26,3 @@
     </div>
 
   </div>
-
-  <a href="">Print</a>
-
-<% end %>
