@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   get '/admin/users_report' , to: 'users_report#index'
   get '/admin/user_report' , to: 'users_report#show'
   get '/admin/monthly_report' , to: 'users_report#monthly_report'
+  get '/admin/monthly_report/print' , to: 'users_report#print'
 
 
   # scope '/admin' do

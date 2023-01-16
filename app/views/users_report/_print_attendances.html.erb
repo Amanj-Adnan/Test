@@ -1,0 +1,17 @@
+<%@attendances_date.each do |day|%>
+
+  <div class="m-1">
+    <div class="bg-white p-2 rounded-lg shadow-md">
+      <div class="text-sm font-bold"><%= day.date.to_date.strftime("%d/%m/%Y") %></div>
+      <div class="mt-4 mb-4">
+        <%=  ((day.clock_out  - day.clock_in )/3600).to_i %> - hours
+      </div>
+      <p class="text-xs uppercase">Exception:</p>
+      <p class="tracking-wide">
+        <%= day.exception ? day.exception : "no" %>
+      </p>
+    </div>
+
+  </div>
+
+<% end %>

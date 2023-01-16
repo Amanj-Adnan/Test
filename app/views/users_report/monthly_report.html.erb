@@ -36,6 +36,6 @@
 
   </div>
 
-  <a href="">Print</a>
+  <%= link_to "Print" , admin_monthly_report_print_path(user_id:@user , month:@month) %>
 
 <% end %>
